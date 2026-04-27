@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "开发计划.md",
+                "file": "版本提示词/01_02_opus.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "开发计划"
+              "title": "01_02_opus"
             }
           }
         ]
@@ -185,17 +185,21 @@
   },
   "active": "374e29102b3140c6",
   "lastOpenFiles": [
-    "未命名.base",
+    "旧版.bat",
+    "新建 文本文档.txt",
+    "版本提示词/01_ming_Gemini.md",
+    "版本提示词/exe_01.html.md",
+    "版本提示词/GLM.md",
+    "版本提示词/02_01_opus.md",
+    "版本提示词/01_02_opus.md",
     "开发计划.md",
+    "未命名.base",
     "一些.md",
     "README.md",
     "peoples_names.md",
     "特殊提示词/主界面设计.md",
     "主提示词.md",
     "特殊提示词/知识库.md",
-    "版本提示词/GLM.md",
-    "版本提示词/01_02_opus.md",
-    "版本提示词/02_01_opus.md",
     "版本提示词/01_03，opus.md",
     "特殊提示词",
     "app_01_03.py",
@@ -205,7 +209,6 @@
     "版本提示词",
     "GLM提示词.md",
     "app_01_01.py",
-    "peoples_names~29BF2.tmp",
-    "~$peoples_names.xls"
+    "peoples_names~29BF2.tmp"
   ]
 }
