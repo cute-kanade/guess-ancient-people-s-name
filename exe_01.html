@@ -1,0 +1,586 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<title>猜历史人物 - 主界面</title>
+<HTA:APPLICATION
+    ID="GuessApp"
+    APPLICATIONNAME="猜历史人物"
+    BORDER="thick"
+    BORDERSTYLE="normal"
+    CAPTION="yes"
+    MAXIMIZEBUTTON="yes"
+    MINIMIZEBUTTON="yes"
+    SHOWINTASKBAR="yes"
+    SINGLEINSTANCE="yes"
+    SYSMENU="yes"
+    WINDOWSTATE="maximize"
+    SCROLL="auto"
+    NAVIGABLE="yes"
+/>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        min-height: 100vh;
+        background: #0a0a0f;
+        font-family: 'KaiTi', 'STKaiti', 'SimSun', serif;
+        padding: 20px;
+        overflow-x: hidden;
+        color: #fff;
+    }
+
+    /* ===== 主布局用 table ===== */
+    .main-container {
+        display: table;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-top: 40px;
+        table-layout: fixed;
+    }
+
+    .main-cell {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0 15px;
+    }
+
+    .main-cell-center {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 200px;
+        padding: 0 20px;
+    }
+
+    /* ===== 中间标题 - 竖写 ===== */
+    .center-title {
+        display: inline-block;
+        writing-mode: tb-rl;
+        font-family: 'KaiTi', 'STKaiti', cursive;
+        font-size: 60px;
+        font-weight: 900;
+        color: #6b3a1f;
+        background: #87CEEB;
+        padding: 40px 28px;
+        border-radius: 16px;
+        letter-spacing: 12px;
+        border: 2px solid #5ba3c7;
+    }
+
+    /* ===== 左：中国古代 母框 ===== */
+    .section-header-china {
+        background: #b71c1c;
+        color: #ffd700;
+        font-size: 42px;
+        font-weight: 900;
+        font-family: 'KaiTi', 'STKaiti', cursive;
+        padding: 18px 30px;
+        border-radius: 14px;
+        text-align: center;
+        letter-spacing: 8px;
+        border: 2px solid #ff8f00;
+        margin-bottom: 16px;
+    }
+
+    /* ===== 右：欧洲 母框 ===== */
+    .section-header-europe {
+        background: #1b5e20;
+        color: #8e44ad;
+        font-size: 42px;
+        font-weight: 900;
+        font-family: 'SimHei', 'Microsoft YaHei', sans-serif;
+        padding: 18px 30px;
+        border-radius: 14px;
+        text-align: center;
+        letter-spacing: 8px;
+        border: 2px solid #6a1b9a;
+        margin-bottom: 16px;
+    }
+
+    /* ===== 左侧选项：黑底白字楷体 ===== */
+    .option-china {
+        display: block;
+        background: #1a1a2e;
+        color: #f0f0f0;
+        font-family: 'KaiTi', 'STKaiti', serif;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 14px 20px;
+        border-radius: 10px;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 4px;
+        border: 1px solid #333;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .option-china:hover {
+        background: #2a1a1a;
+        border-color: #ffd700;
+        color: #ffd700;
+    }
+
+    .option-china.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    .option-china.disabled:hover {
+        background: #1a1a2e;
+        border-color: #333;
+        color: #f0f0f0;
+    }
+
+    /* ===== 右侧选项：白底黑字 ===== */
+    .option-europe {
+        display: block;
+        background: #e8e8e0;
+        color: #1a1a1a;
+        font-family: 'SimHei', 'Microsoft YaHei', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        padding: 14px 20px;
+        border-radius: 10px;
+        text-align: center;
+        text-decoration: none;
+        letter-spacing: 4px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .option-europe:hover {
+        background: #d0c8e0;
+        border-color: #8e44ad;
+        color: #6b2d8b;
+    }
+
+    .option-europe.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    .option-europe.disabled:hover {
+        background: #e8e8e0;
+        border-color: #ccc;
+        color: #1a1a1a;
+    }
+
+    /* ===== 底部署名 ===== */
+    .footer {
+        margin-top: 30px;
+        color: #444;
+        font-size: 14px;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+    /* ===== 标签 ===== */
+    .tag {
+        display: inline-block;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-left: 8px;
+        vertical-align: middle;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+
+    .tag-ready {
+        background: #1b4332;
+        color: #2ecc71;
+        border: 1px solid #2ecc71;
+    }
+
+    .tag-dev {
+        background: #3d2e00;
+        color: #f1c40f;
+        border: 1px solid #f1c40f;
+    }
+
+    .tag-dev-dark {
+        background: #2a2200;
+        color: #bfa200;
+        border: 1px solid #bfa200;
+    }
+
+    /* ===== 模态框 ===== */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+    }
+
+    .modal {
+        background: #1e1e2e;
+        border: 1px solid #444;
+        border-radius: 16px;
+        padding: 36px 32px;
+        width: 460px;
+        color: #e0e0e0;
+        font-family: 'KaiTi', 'SimSun', serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -250px;
+        margin-left: -230px;
+    }
+
+    .modal h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #ffd700;
+        text-align: center;
+        letter-spacing: 3px;
+    }
+
+    .modal-subtitle {
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .modal label {
+        display: block;
+        font-size: 14px;
+        color: #aaa;
+        margin-bottom: 6px;
+        margin-top: 14px;
+    }
+
+    .modal select,
+    .modal input {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid #444;
+        background: #2a2a3e;
+        color: #e0e0e0;
+        font-size: 15px;
+        font-family: inherit;
+    }
+
+    .modal select option {
+        background: #1e1e2e;
+        color: #e0e0e0;
+    }
+
+    .modal-buttons {
+        margin-top: 24px;
+        text-align: right;
+    }
+
+    .btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        border: none;
+        font-size: 16px;
+        font-family: inherit;
+        cursor: pointer;
+        letter-spacing: 2px;
+        margin-left: 10px;
+    }
+
+    .btn-primary {
+        background: #b71c1c;
+        color: #ffd700;
+    }
+
+    .btn-primary:hover {
+        background: #d32f2f;
+    }
+
+    .btn-cancel {
+        background: #333;
+        color: #aaa;
+        border: 1px solid #555;
+    }
+
+    .btn-cancel:hover {
+        background: #444;
+        color: #ddd;
+    }
+
+    .hint-text {
+        font-size: 12px;
+        color: #666;
+        margin-top: 4px;
+    }
+
+    /* ===== 提示条 ===== */
+    .toast {
+        display: none;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        margin-left: -200px;
+        width: 400px;
+        background: #2ecc71;
+        color: #fff;
+        padding: 12px 28px;
+        border-radius: 8px;
+        font-size: 16px;
+        z-index: 2000;
+        text-align: center;
+    }
+
+    .toast-error {
+        background: #e74c3c;
+    }
+</style>
+</head>
+<body>
+
+    <div id="toast" class="toast"></div>
+
+    <div class="main-container">
+        <!-- 左侧：中国古代 -->
+        <div class="main-cell">
+            <div class="section-header-china">中国古代</div>
+            <div>
+                <a class="option-china" id="btn-china-1000" href="javascript:void(0)" onclick="runBat('猜中国古人1000人.bat', '全历史1000人')">
+                    全历史1000人 <span class="tag tag-ready">可用</span>
+                </a>
+                <a class="option-china disabled" id="btn-china-200" href="javascript:void(0)" onclick="return false">
+                    全历史200人 <span class="tag tag-dev">开发中</span>
+                </a>
+                <a class="option-china disabled" id="btn-chunqiu" href="javascript:void(0)" onclick="return false">
+                    春秋战国200人 <span class="tag tag-dev">开发中</span>
+                </a>
+                <a class="option-china disabled" id="btn-qinhan" href="javascript:void(0)" onclick="return false">
+                    秦、西汉200人 <span class="tag tag-dev">开发中</span>
+                </a>
+                <a class="option-china disabled" id="btn-sanguo" href="javascript:void(0)" onclick="return false">
+                    汉末三国200人 <span class="tag tag-dev">开发中</span>
+                </a>
+                <a class="option-china disabled" id="btn-suitang" href="javascript:void(0)" onclick="return false">
+                    隋唐200人 <span class="tag tag-dev">开发中</span>
+                </a>
+                <a class="option-china" id="btn-ming" href="javascript:void(0)" onclick="openApiModal('明朝200人', 'app_01_ming.py')">
+                    明朝200人 <span class="tag tag-ready">可用</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 中间标题 -->
+        <div class="main-cell-center">
+            <div class="center-title" id="main-title">猜历史人物</div>
+        </div>
+
+        <!-- 右侧：欧洲 -->
+        <div class="main-cell">
+            <div class="section-header-europe">欧 洲</div>
+            <div>
+                <a class="option-europe disabled" id="btn-europe-500" href="javascript:void(0)" onclick="return false">
+                    全欧500人 <span class="tag tag-dev-dark">开发中</span>
+                </a>
+                <a class="option-europe disabled" id="btn-france" href="javascript:void(0)" onclick="return false">
+                    法国200人 <span class="tag tag-dev-dark">开发中</span>
+                </a>
+                <a class="option-europe disabled" id="btn-uk" href="javascript:void(0)" onclick="return false">
+                    英国200人 <span class="tag tag-dev-dark">开发中</span>
+                </a>
+                <a class="option-europe disabled" id="btn-germany" href="javascript:void(0)" onclick="return false">
+                    德意志200人 <span class="tag tag-dev-dark">开发中</span>
+                </a>
+                <a class="option-europe disabled" id="btn-russia" href="javascript:void(0)" onclick="return false">
+                    俄罗斯200人 <span class="tag tag-dev-dark">开发中</span>
+                </a>
+                <a class="option-europe disabled" id="btn-greece" href="javascript:void(0)" onclick="return false">
+                    希腊200人 <span class="tag tag-dev-dark">开发中</span>
+                </a>
+                <a class="option-europe disabled" id="btn-rome" href="javascript:void(0)" onclick="return false">
+                    古罗马200人 <span class="tag tag-dev-dark">开发中</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">猜历史人物 · 海龟汤 AI 游戏</div>
+
+    <!-- API 配置模态框 -->
+    <div class="modal-overlay" id="apiModal">
+        <div class="modal">
+            <h2>⚙ LLM API 配置</h2>
+            <div class="modal-subtitle" id="modalSubtitle">即将进入：明朝200人</div>
+
+            <label>选择模型提供商</label>
+            <select id="providerSelect" onchange="onProviderChange()">
+                <option value="zhipu" selected>智谱AI（GLM-4-Air）— 默认</option>
+                <option value="deepseek">DeepSeek</option>
+                <option value="openai">OpenAI（GPT-4o-mini）</option>
+                <option value="xai">xAI（Grok-2）</option>
+                <option value="custom">自定义</option>
+            </select>
+
+            <label>API Key</label>
+            <input type="password" id="apiKeyInput" value="2decccf007f4414b8c71cda0b8e3cf26.TeiHdRMi4Pxs1Fx3">
+            <div class="hint-text">默认已填入智谱AI演示Key</div>
+
+            <label>API URL</label>
+            <input type="text" id="apiUrlInput" value="https://open.bigmodel.cn/api/paas/v4/chat/completions">
+
+            <label>模型名称</label>
+            <input type="text" id="modelInput" value="glm-4-air">
+
+            <div class="modal-buttons">
+                <button class="btn btn-cancel" onclick="closeModal()">取消</button>
+                <button class="btn btn-primary" onclick="confirmLaunch()">启动游戏</button>
+            </div>
+        </div>
+    </div>
+
+    <script language="javascript">
+        // ===== 获取当前 HTA 文件所在目录 =====
+        function getAppDir() {
+            try {
+                var fso = new ActiveXObject("Scripting.FileSystemObject");
+                var htaPath = unescape(document.location.pathname);
+                // 去掉开头的 /
+                if (htaPath.charAt(0) === '/') {
+                    htaPath = htaPath.substring(1);
+                }
+                // 替换正斜杠为反斜杠
+                htaPath = htaPath.replace(/\//g, "\\");
+                return fso.GetParentFolderName(htaPath);
+            } catch(e) {
+                alert("获取路径失败: " + e.message);
+                return "";
+            }
+        }
+
+        // ===== 运行 bat 文件 =====
+        function runBat(batFileName, title) {
+            try {
+                var shell = new ActiveXObject("WScript.Shell");
+                var appDir = getAppDir();
+                if (!appDir) return;
+
+                var batPath = appDir + "\\" + batFileName;
+                
+                // 用 cmd /c 执行，先 cd 到目录再运行 bat
+                var cmd = 'cmd /c cd /d "' + appDir + '" && "' + batPath + '"';
+                shell.Run(cmd, 1, false);
+
+                showToast("正在启动【" + title + "】...", false);
+            } catch(e) {
+                showToast("启动失败: " + e.message, true);
+            }
+        }
+
+        // ===== 运行 streamlit =====
+        function runStreamlit(pyFile) {
+            try {
+                var shell = new ActiveXObject("WScript.Shell");
+                var appDir = getAppDir();
+                if (!appDir) return;
+
+                var cmd = 'cmd /c cd /d "' + appDir + '" && streamlit run ' + pyFile;
+                shell.Run(cmd, 1, false);
+
+                showToast("正在启动 Streamlit...", false);
+            } catch(e) {
+                showToast("启动失败: " + e.message, true);
+            }
+        }
+
+        // ===== 提供商预设 =====
+        var PROVIDERS = {
+            "zhipu": {
+                url: "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+                model: "glm-4-air",
+                defaultKey: "2decccf007f4414b8c71cda0b8e3cf26.TeiHdRMi4Pxs1Fx3"
+            },
+            "deepseek": {
+                url: "https://api.deepseek.com/v1/chat/completions",
+                model: "deepseek-chat",
+                defaultKey: ""
+            },
+            "openai": {
+                url: "https://api.openai.com/v1/chat/completions",
+                model: "gpt-4o-mini",
+                defaultKey: ""
+            },
+            "xai": {
+                url: "https://api.x.ai/v1/chat/completions",
+                model: "grok-2",
+                defaultKey: ""
+            },
+            "custom": {
+                url: "",
+                model: "",
+                defaultKey: ""
+            }
+        };
+
+        var pendingScript = "";
+        var pendingTitle = "";
+
+        // ===== 切换提供商 =====
+        function onProviderChange() {
+            var sel = document.getElementById("providerSelect").value;
+            var p = PROVIDERS[sel];
+            document.getElementById("apiUrlInput").value = p.url;
+            document.getElementById("modelInput").value = p.model;
+            document.getElementById("apiKeyInput").value = p.defaultKey;
+        }
+
+        // ===== 打开模态框 =====
+        function openApiModal(title, script) {
+            pendingScript = script;
+            pendingTitle = title;
+            document.getElementById("modalSubtitle").innerText = "即将进入：" + title;
+            document.getElementById("providerSelect").value = "zhipu";
+            onProviderChange();
+            document.getElementById("apiModal").style.display = "block";
+        }
+
+        // ===== 关闭模态框 =====
+        function closeModal() {
+            document.getElementById("apiModal").style.display = "none";
+        }
+
+        // ===== 确认启动 =====
+        function confirmLaunch() {
+            var apiKey = document.getElementById("apiKeyInput").value;
+            if (!apiKey || apiKey.replace(/\s/g, "") === "") {
+                alert("请输入 API Key");
+                return;
+            }
+            runStreamlit(pendingScript);
+            closeModal();
+        }
+
+        // ===== 提示条 =====
+        function showToast(msg, isError) {
+            var t = document.getElementById("toast");
+            t.innerText = msg;
+            t.className = isError ? "toast toast-error" : "toast";
+            t.style.display = "block";
+            setTimeout(function() {
+                t.style.display = "none";
+            }, 3000);
+        }
+
+        // ===== ESC 关闭模态框 =====
+        document.onkeydown = function(e) {
+            e = e || window.event;
+            if (e.keyCode === 27) closeModal();
+        };
+    </script>
+</body>
+</html>
