@@ -22,6 +22,8 @@ from .state import build_state
 from .hint import build_hint_strategy
 from .output import build_output_format
 from .tools import build_tool_prompt
+from .fact_check import build_fact_check_layer
+from .recheck import build_recheck_prompt, build_batch_recheck_prompt
 from .builder import build_system_prompt
 
 __all__ = [
@@ -31,5 +33,8 @@ __all__ = [
     "build_hint_strategy",
     "build_output_format",
     "build_tool_prompt",
+    "build_fact_check_layer",
+    "build_recheck_prompt",
+    "build_batch_recheck_prompt",
     "build_system_prompt",
 ]

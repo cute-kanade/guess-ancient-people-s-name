@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="猜历史人物 - AI海龟汤游戏，用是或否的提问猜出历史人物">
+    <title>猜历史人物 · AI海龟汤游戏 v3.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           DESIGN TOKENS
+           ======================================== */
+        :root {
+            /* Core palette — from 主界面设计.md */
+            --china-red: #b71c1c;
+            --china-red-glow: rgba(183, 28, 28, 0.4);
+            --gold: #ffd700;
+            --gold-soft: #ffe066;
+            --sky-blue: #87CEEB;
+            --sky-blue-deep: #5ba3c7;
+            --europe-green: #1b5e20;
+            --europe-green-glow: rgba(27, 94, 32, 0.35);
+            --purple: #8e44ad;
+            --purple-glow: rgba(142, 68, 173, 0.25);
+
+            /* Surfaces */
+            --bg-deep: #06060c;
+            --bg-card: rgba(16, 16, 28, 0.85);
+            --bg-card-hover: rgba(26, 26, 48, 0.95);
+            --bg-glass: rgba(255, 255, 255, 0.04);
+            --bg-modal: rgba(14, 14, 24, 0.97);
+
+            /* Text */
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b5;
+            --text-muted: #606075;
+
+            /* Borders */
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-china: rgba(255, 215, 0, 0.2);
+            --border-europe: rgba(142, 68, 173, 0.2);
+
+            /* Transitions */
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+            /* Layout */
+            --max-width: 1400px;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+        }
+
+        /* ========================================
+           LIGHT THEME OVERRIDES
+           ======================================== */
+        [data-theme="light"] {
+            --bg-deep: #f5f0e8;
+            --bg-card: rgba(255, 255, 255, 0.82);
+            --bg-card-hover: rgba(255, 255, 255, 0.95);
+            --bg-glass: rgba(0, 0, 0, 0.02);
+            --bg-modal: rgba(255, 255, 252, 0.97);
+
+            --text-primary: #1a1a1f;
+            --text-secondary: #555568;
+            --text-muted: #8a8a9a;
+
+            --border-subtle: rgba(0, 0, 0, 0.08);
+            --border-china: rgba(183, 28, 28, 0.15);
+            --border-europe: rgba(27, 94, 32, 0.15);
+
+            --china-red-glow: rgba(183, 28, 28, 0.15);
+            --europe-green-glow: rgba(27, 94, 32, 0.12);
+            --purple-glow: rgba(142, 68, 173, 0.1);
+        }
+
+        /* Light theme specific overrides */
+        [data-theme="light"] .option-china {
+            background: rgba(255, 255, 255, 0.7);
+            color: #1a1a2e;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        [data-theme="light"] .option-china:hover {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--china-red);
+            color: var(--china-red);
+            box-shadow: 0 6px 20px rgba(183, 28, 28, 0.1);
+        }
+        [data-theme="light"] .option-europe {
+            background: rgba(245, 245, 240, 0.9);
+            color: #1a1a1a;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        [data-theme="light"] .option-europe:hover {
+            background: rgba(240, 235, 248, 0.95);
+            border-color: var(--purple);
+            color: #5b2d7a;
+            box-shadow: 0 6px 20px rgba(142, 68, 173, 0.1);
+        }
+        [data-theme="light"] .center-title {
+            color: #1a3a50;
+            box-shadow: 0 8px 30px rgba(135, 206, 235, 0.3), 0 0 0 1px rgba(0,0,0,0.05) inset;
+        }
+        [data-theme="light"] .modal {
+            background: rgba(255, 255, 252, 0.97);
+            border-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0,0,0,0.05) inset;
+        }
+        [data-theme="light"] .modal select,
+        [data-theme="light"] .modal input {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #1a1a1f;
+        }
+        [data-theme="light"] .modal select option {
+            background: #fff;
+            color: #1a1a1f;
+        }
+        [data-theme="light"] .modal-overlay {
+            background: rgba(0, 0, 0, 0.4);
+        }
+        [data-theme="light"] .bg-canvas::before {
+            background:
+                radial-gradient(ellipse 600px 400px at 15% 20%, rgba(183, 28, 28, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 500px 350px at 85% 75%, rgba(27, 94, 32, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse 400px 300px at 50% 50%, rgba(135, 206, 235, 0.04) 0%, transparent 60%);
+        }
+        [data-theme="light"] .particle {
+            opacity: 0 !important;
+        }
+        [data-theme="light"] .tag-v3 {
+            background: rgba(0, 128, 96, 0.1);
+            color: #00795a;
+            border-color: rgba(0, 128, 96, 0.25);
+        }
+        [data-theme="light"] .tag-ready {
+            background: rgba(46, 204, 113, 0.1);
+            color: #1a7a42;
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        [data-theme="light"] .tag-dev {
+            background: rgba(241, 196, 15, 0.12);
+            color: #8a6d00;
+            border-color: rgba(241, 196, 15, 0.3);
+        }
+        [data-theme="light"] .tag-dev-dark {
+            background: rgba(191, 162, 0, 0.1);
+            color: #6b5a00;
+            border-color: rgba(191, 162, 0, 0.25);
+        }
+        [data-theme="light"] .key-status-ok {
+            background: rgba(46, 204, 113, 0.12);
+            color: #1a7a42;
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        [data-theme="light"] .toast {
+            background: linear-gradient(135deg, #2d6a4f, #40916c);
+        }
+        [data-theme="light"] .toast.toast-error {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+        }
+        [data-theme="light"] .section-header-china {
+            box-shadow: 0 6px 24px rgba(183, 28, 28, 0.18);
+        }
+        [data-theme="light"] .section-header-europe {
+            box-shadow: 0 6px 24px rgba(27, 94, 32, 0.18);
+        }
+
+        /* ========================================
+           THEME SWITCHER UI
+           ======================================== */
+        .theme-switcher {
+            position: fixed;
+            top: clamp(12px, 1.5vw, 18px);
+            right: clamp(12px, 2vw, 28px);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            gap: clamp(4px, 0.5vw, 8px);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 40px;
+            padding: clamp(3px, 0.4vw, 5px) clamp(4px, 0.5vw, 6px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        [data-theme="light"] .theme-switcher {
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .theme-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(28px, 2.8vw, 36px);
+            height: clamp(28px, 2.8vw, 36px);
+            border: none;
+            border-radius: 50%;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: clamp(13px, 1.3vw, 17px);
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .theme-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-glass);
+        }
+
+        .theme-btn.active {
+            background: var(--china-red);
+            color: var(--gold);
+            box-shadow: 0 2px 10px var(--china-red-glow);
+        }
+
+        .theme-btn.active:hover {
+            background: #c62828;
+        }
+
+        .theme-btn-label {
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%) translateY(4px);
+            white-space: nowrap;
+            font-size: 11px;
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        [data-theme="light"] .theme-btn-label {
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .theme-btn:hover .theme-btn-label {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ========================================
+           RESET & BASE
+           ======================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Noto Sans SC', 'Microsoft YaHei', system-ui, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.5s ease, color 0.4s ease;
+        }
+
+        /* ========================================
+           ANIMATED BACKGROUND
+           ======================================== */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-canvas::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(ellipse 600px 400px at 15% 20%, rgba(183, 28, 28, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 500px 350px at 85% 75%, rgba(27, 94, 32, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 400px 300px at 50% 50%, rgba(135, 206, 235, 0.04) 0%, transparent 60%);
+            animation: bgDrift 30s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgDrift {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(30px, -20px) rotate(2deg); }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(100vh) scale(0); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-20vh) scale(1); }
+        }
+
+        /* ========================================
+           TOP ACCENT BAR
+           ======================================== */
+        .top-accent {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                var(--china-red) 0%,
+                var(--gold) 25%,
+                var(--sky-blue) 50%,
+                var(--purple) 75%,
+                var(--europe-green) 100%
+            );
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        /* ========================================
+           MAIN LAYOUT — fluid scaling, always 3-col
+           ======================================== */
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: clamp(20px, 4vw, 60px) clamp(10px, 3vw, 40px) clamp(16px, 3vw, 40px);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+            align-items: start;
+            flex: 1;
+        }
+
+        /* ========================================
+           CENTER TITLE — fluid sizing
+           ======================================== */
+        .center-column {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 clamp(6px, 1.5vw, 24px);
+            position: sticky;
+            top: 80px;
+        }
+
+        .center-title {
+            writing-mode: vertical-rl;
+            font-family: 'Noto Serif SC', 'KaiTi', 'STKaiti', serif;
+            font-size: clamp(24px, 4.2vw, 58px);
+            font-weight: 900;
+            color: #3d2010;
+            background: linear-gradient(180deg, var(--sky-blue) 0%, #6db8d4 100%);
+            padding: clamp(16px, 3vw, 40px) clamp(12px, 2vw, 28px);
+            border-radius: var(--radius-lg);
+            letter-spacing: clamp(6px, 1.2vw, 16px);
+            border: 2px solid var(--sky-blue-deep);
+            box-shadow:
+                0 12px 40px rgba(135, 206, 235, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.6s var(--ease-out-expo), box-shadow 0.6s var(--ease-out-expo);
+        }
+
+        .center-title::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .center-title:hover {
+            transform: scale(1.03);
+            box-shadow:
+                0 16px 50px rgba(135, 206, 235, 0.35),
+                0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+        }
+
+        /* ========================================
+           SECTION PANELS — fluid sizing
+           ======================================== */
+        .section-panel {
+            padding: 0 clamp(4px, 1.4vw, 20px);
+        }
+
+        .section-header {
+            font-family: 'Noto Serif SC', 'KaiTi', serif;
+            font-size: clamp(16px, 2.8vw, 36px);
+            font-weight: 900;
+            padding: clamp(10px, 1.4vw, 18px) clamp(12px, 2vw, 28px);
+            border-radius: var(--radius-md);
+            text-align: center;
+            letter-spacing: clamp(3px, 0.8vw, 10px);
+            margin-bottom: clamp(12px, 1.8vw, 24px);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s var(--ease-out-expo);
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .section-header:hover {
+            transform: translateY(-2px);
+        }
+
+        .section-header-china {
+            background: linear-gradient(135deg, var(--china-red) 0%, #c62828 100%);
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 8px 30px var(--china-red-glow);
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .section-header-china:hover {
+            box-shadow: 0 12px 40px rgba(183, 28, 28, 0.5);
+        }
+
+        .section-header-europe {
+            background: linear-gradient(135deg, var(--europe-green) 0%, #2e7d32 100%);
+            color: var(--purple);
+            font-family: 'Noto Sans SC', 'SimHei', sans-serif;
+            border: 1px solid rgba(142, 68, 173, 0.3);
+            box-shadow: 0 8px 30px var(--europe-green-glow);
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .section-header-europe:hover {
+            box-shadow: 0 12px 40px rgba(27, 94, 32, 0.5);
+        }
+
+        /* ========================================
+           OPTION CARDS
+           ======================================== */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(5px, 0.7vw, 10px);
+        }
+
+        .option-card {
+            display: block;
+            padding: clamp(10px, 1.2vw, 16px) clamp(10px, 1.6vw, 22px);
+            border-radius: var(--radius-sm);
+            text-align: center;
+            text-decoration: none;
+            font-size: clamp(12px, 1.4vw, 18px);
+            font-weight: 700;
+            letter-spacing: clamp(1px, 0.3vw, 4px);
+            cursor: pointer;
+            transition:
+                transform 0.35s var(--ease-out-expo),
+                box-shadow 0.35s var(--ease-out-expo),
+                background 0.35s ease,
+                border-color 0.35s ease,
+                color 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .option-card:hover::before {
+            opacity: 1;
+        }
+
+        /* China options */
+        .option-china {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-family: 'Noto Serif SC', 'KaiTi', serif;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        .option-china::before {
+            background: linear-gradient(135deg, rgba(183, 28, 28, 0.1), rgba(255, 215, 0, 0.05));
+        }
+
+        .option-china:hover {
+            transform: translateY(-3px);
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 215, 0, 0.4);
+            color: var(--gold);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.1), 0 0 0 1px rgba(255, 215, 0, 0.1);
+        }
+
+        .option-china:active {
+            transform: translateY(0);
+        }
+
+        /* Europe options */
+        .option-europe {
+            background: rgba(232, 232, 224, 0.92);
+            color: #1a1a1a;
+            font-family: 'Noto Sans SC', 'SimHei', sans-serif;
+            border: 1px solid rgba(208, 208, 200, 0.6);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .option-europe::before {
+            background: linear-gradient(135deg, rgba(142, 68, 173, 0.08), rgba(27, 94, 32, 0.05));
+        }
+
+        .option-europe:hover {
+            transform: translateY(-3px);
+            background: rgba(220, 215, 235, 0.95);
+            border-color: rgba(142, 68, 173, 0.5);
+            color: #5b2d7a;
+            box-shadow: 0 8px 25px var(--purple-glow), 0 0 0 1px rgba(142, 68, 173, 0.15);
+        }
+
+        .option-europe:active {
+            transform: translateY(0);
+        }
+
+        /* Disabled state */
+        .option-card.disabled {
+            opacity: 0.38;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* ========================================
+           TAGS / BADGES
+           ======================================== */
+        .tag {
+            display: inline-block;
+            font-size: clamp(9px, 0.85vw, 11px);
+            padding: clamp(2px, 0.25vw, 3px) clamp(5px, 0.7vw, 10px);
+            border-radius: 20px;
+            margin-left: clamp(4px, 0.5vw, 8px);
+            vertical-align: middle;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: none;
+            font-family: 'Noto Sans SC', system-ui, sans-serif;
+        }
+
+        .tag-v3 {
+            background: rgba(0, 77, 64, 0.6);
+            color: #69f0ae;
+            border: 1px solid rgba(105, 240, 174, 0.4);
+        }
+
+        .tag-ready {
+            background: rgba(27, 67, 50, 0.6);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+        }
+
+        .tag-dev {
+            background: rgba(61, 46, 0, 0.6);
+            color: #f1c40f;
+            border: 1px solid rgba(241, 196, 15, 0.4);
+        }
+
+        .tag-dev-dark {
+            background: rgba(42, 34, 0, 0.6);
+            color: #bfa200;
+            border: 1px solid rgba(191, 162, 0, 0.4);
+        }
+
+        /* ========================================
+           SECTION DIVIDER
+           ======================================== */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+            border: none;
+            margin: 8px 0 10px;
+        }
+
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer-area {
+            margin-top: clamp(24px, 3.5vw, 50px);
+            padding: clamp(14px, 2vw, 30px) 0 clamp(10px, 1.5vw, 20px);
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer {
+            color: var(--text-muted);
+            font-size: clamp(11px, 1.1vw, 15px);
+            letter-spacing: clamp(1px, 0.25vw, 3px);
+            font-weight: 500;
+        }
+
+        .footer-note {
+            margin-top: clamp(5px, 0.7vw, 10px);
+            color: var(--text-muted);
+            font-size: clamp(10px, 1vw, 13px);
+            letter-spacing: 1px;
+            font-family: 'Noto Serif SC', 'KaiTi', serif;
+            opacity: 0.7;
+        }
+
+        .footer-ver {
+            margin-top: clamp(4px, 0.5vw, 8px);
+            color: var(--text-muted);
+            font-size: clamp(9px, 0.85vw, 11px);
+            font-family: 'Consolas', 'Courier New', monospace;
+            opacity: 0.5;
+        }
+
+        /* ========================================
+           MODAL
+           ======================================== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background: var(--bg-modal);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 40px 36px;
+            width: 520px;
+            max-width: 92vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            color: var(--text-primary);
+            font-family: 'Noto Sans SC', system-ui, sans-serif;
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.4s var(--ease-out-expo);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 26px;
+            margin-bottom: 8px;
+            color: var(--gold);
+            text-align: center;
+            letter-spacing: 4px;
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 28px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .modal label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            margin-top: 18px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .modal select,
+        .modal input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-primary);
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .modal select:focus,
+        .modal input:focus {
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08);
+        }
+
+        .modal select option {
+            background: #1a1a2e;
+            color: var(--text-primary);
+        }
+
+        .hint-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .key-status {
+            display: inline-block;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+            font-weight: 700;
+        }
+
+        .key-status-ok {
+            background: rgba(27, 67, 50, 0.6);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+        }
+
+        .modal-buttons {
+            margin-top: 32px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-size: 15px;
+            font-family: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--china-red), #c62828);
+            color: var(--gold);
+            box-shadow: 0 4px 15px var(--china-red-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(183, 28, 28, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-cancel {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* ========================================
+           TOAST NOTIFICATION
+           ======================================== */
+        .toast {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: linear-gradient(135deg, #1b4332, #2d6a4f);
+            color: #fff;
+            padding: clamp(10px, 1vw, 14px) clamp(18px, 2.4vw, 32px);
+            border-radius: var(--radius-sm);
+            font-size: clamp(12px, 1.1vw, 15px);
+            font-weight: 700;
+            z-index: 3000;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            transition: transform 0.5s var(--ease-out-expo);
+            letter-spacing: 2px;
+        }
+
+        .toast.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .toast.toast-error {
+            background: linear-gradient(135deg, #7f1d1d, #991b1b);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        /* ========================================
+           ENTRANCE ANIMATIONS
+           ======================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out-expo) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.35s; }
+        .delay-5 { animation-delay: 0.4s; }
+        .delay-6 { animation-delay: 0.45s; }
+        .delay-7 { animation-delay: 0.5s; }
+        .delay-8 { animation-delay: 0.55s; }
+        .delay-9 { animation-delay: 0.6s; }
+        .delay-10 { animation-delay: 0.65s; }
+        .delay-11 { animation-delay: 0.7s; }
+        .delay-12 { animation-delay: 0.75s; }
+
+        /* ========================================
+           RESPONSIVE — fluid scaling only,
+           always keeps 3-column grid layout.
+           All sizing handled by clamp() above.
+           ======================================== */
+        @media (max-width: 500px) {
+            /* Only minimal tweaks for very narrow screens */
+            .modal {
+                padding: clamp(20px, 4vw, 36px) clamp(14px, 3vw, 28px);
+            }
+            .section-divider {
+                margin: 4px 0 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated background -->
+    <div class="bg-canvas" id="bgCanvas"></div>
+
+    <!-- Top accent bar -->
+    <div class="top-accent"></div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher" id="themeSwitcher">
+        <button class="theme-btn" id="btnLight" onclick="setTheme('light')" title="亮色模式">
+            ☀
+            <span class="theme-btn-label">亮色</span>
+        </button>
+        <button class="theme-btn active" id="btnSystem" onclick="setTheme('system')" title="跟随系统">
+            ◐
+            <span class="theme-btn-label">系统</span>
+        </button>
+        <button class="theme-btn" id="btnDark" onclick="setTheme('dark')" title="深色模式">
+            ☾
+            <span class="theme-btn-label">深色</span>
+        </button>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Page content -->
+    <div class="page-wrapper">
+        <div class="main-grid">
+            <!-- Left: China section -->
+            <div class="section-panel">
+                <div class="section-header section-header-china animate-in delay-2">中国古代</div>
+                <div class="options-list">
+                    <a class="option-card option-china animate-in delay-3" id="btn-china-v3-1000"
+                       href="#" onclick="openApiModal('全古代1000人', 'app.py'); return false">
+                        全古代1000人
+                        <span class="tag tag-v3">v3.0</span><span class="tag tag-ready">可用</span>
+                    </a>
+                    <a class="option-card option-china animate-in delay-4" id="btn-china-v3-200"
+                       href="#" onclick="openApiModal('全古代200人', 'app_03_mini.py'); return false">
+                        全古代200人
+                        <span class="tag tag-v3">v3.0</span><span class="tag tag-ready">可用</span>
+                    </a>
+
+                    <hr class="section-divider">
+
+                    <a class="option-card option-china disabled animate-in delay-5" id="btn-chunqiu" href="#">
+                        春秋战国200人 <span class="tag tag-dev">开发中</span>
+                    </a>
+                    <a class="option-card option-china disabled animate-in delay-6" id="btn-qinhan" href="#">
+                        秦、西汉200人 <span class="tag tag-dev">开发中</span>
+                    </a>
+                    <a class="option-card option-china disabled animate-in delay-7" id="btn-sanguo" href="#">
+                        汉末三国200人 <span class="tag tag-dev">开发中</span>
+                    </a>
+                    <a class="option-card option-china disabled animate-in delay-8" id="btn-suitang" href="#">
+                        隋唐200人 <span class="tag tag-dev">开发中</span>
+                    </a>
+
+                    <hr class="section-divider">
+
+                    <a class="option-card option-china animate-in delay-9" id="btn-ming"
+                       href="#" onclick="openApiModal('明朝200人', 'app_03_ming.py'); return false">
+                        明朝200人
+                        <span class="tag tag-v3">v3.0</span><span class="tag tag-ready">可用</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Center: Title -->
+            <div class="center-column animate-in delay-1">
+                <div class="center-title" id="main-title">猜历史人物</div>
+            </div>
+
+            <!-- Right: Europe section -->
+            <div class="section-panel">
+                <div class="section-header section-header-europe animate-in delay-2">欧　洲</div>
+                <div class="options-list">
+                    <a class="option-card option-europe disabled animate-in delay-3" id="btn-europe-500" href="#">
+                        全欧500人 <span class="tag tag-dev-dark">开发中</span>
+                    </a>
+                    <a class="option-card option-europe disabled animate-in delay-4" id="btn-france" href="#">
+                        法国200人 <span class="tag tag-dev-dark">开发中</span>
+                    </a>
+                    <a class="option-card option-europe disabled animate-in delay-5" id="btn-uk" href="#">
+                        英国200人 <span class="tag tag-dev-dark">开发中</span>
+                    </a>
+                    <a class="option-card option-europe disabled animate-in delay-6" id="btn-germany" href="#">
+                        德意志200人 <span class="tag tag-dev-dark">开发中</span>
+                    </a>
+                    <a class="option-card option-europe disabled animate-in delay-7" id="btn-russia" href="#">
+                        俄罗斯200人 <span class="tag tag-dev-dark">开发中</span>
+                    </a>
+                    <a class="option-card option-europe disabled animate-in delay-8" id="btn-greece" href="#">
+                        希腊200人 <span class="tag tag-dev-dark">开发中</span>
+                    </a>
+                    <a class="option-card option-europe disabled animate-in delay-9" id="btn-rome" href="#">
+                        古罗马200人 <span class="tag tag-dev-dark">开发中</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-area animate-in delay-10">
+            <div class="footer">猜历史人物 · 海龟汤 AI 游戏（v3.0 全量重构架构版）</div>
+            <div class="footer-note">注：本游戏「古代」范围自三皇五帝至辛亥革命（1912），非官方史学以1840年为中国近代史开端之分界。</div>
+            <div class="footer-ver">exe_03_01 · GLM-4.5-Air · 2026</div>
+        </div>
+    </div>
+
+    <!-- API Config Modal -->
+    <div class="modal-overlay" id="apiModal">
+        <div class="modal" id="modalBox">
+            <h2>⚙ LLM API 配置</h2>
+            <div class="modal-subtitle" id="modalSubtitle">即将进入：加载中...</div>
+
+            <label>选择模型提供商</label>
+            <select id="providerSelect" onchange="onProviderChange()">
+                <option value="zhipu" selected>智谱AI（GLM-4.5-Air）— 默认</option>
+                <option value="deepseek">DeepSeek</option>
+                <option value="openai">OpenAI（GPT-4o-mini）</option>
+                <option value="xai">xAI（Grok-2）</option>
+                <option value="custom">自定义</option>
+            </select>
+
+            <label>API Key <span class="key-status key-status-ok" id="keyStatusTag">已内置</span></label>
+            <input type="password" id="apiKeyInput" value="" placeholder="使用内置Key或手动输入">
+            <div class="hint-text">默认已内置智谱AI演示Key（加密存储），亦可手动覆盖。</div>
+
+            <label>API URL</label>
+            <input type="text" id="apiUrlInput" value="https://open.bigmodel.cn/api/paas/v4/chat/completions">
+
+            <label>模型名称</label>
+            <input type="text" id="modelInput" value="glm-4.5-air">
+
+            <div class="modal-buttons">
+                <button class="btn btn-cancel" onclick="closeModal()">取消</button>
+                <button class="btn btn-primary" onclick="confirmLaunch()">启动游戏</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== XOR Key Decryption =====
+        var _EK = "7e440615437b5112175d1448640313430d0c57540050744d0710422c5d104c0b5c3a251645011a24754054463d45032034";
+        var _XK = "GuessHistoryPerson2026";
+
+        function _dk(hex, xk) {
+            var r = "";
+            for (var i = 0; i < hex.length / 2; i++) {
+                var b = parseInt(hex.substr(i * 2, 2), 16);
+                var x = xk.charCodeAt(i % xk.length);
+                r += String.fromCharCode(b ^ x);
+            }
+            return r;
+        }
+
+        var _cachedKey = "";
+        function getDefaultKey() {
+            if (!_cachedKey) _cachedKey = _dk(_EK, _XK);
+            return _cachedKey;
+        }
+
+        // ===== Provider Presets =====
+        var PROVIDERS = {
+            "zhipu": {
+                url: "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+                model: "glm-4.5-air",
+                useBuiltinKey: true
+            },
+            "deepseek": {
+                url: "https://api.deepseek.com/v1/chat/completions",
+                model: "deepseek-chat",
+                useBuiltinKey: false
+            },
+            "openai": {
+                url: "https://api.openai.com/v1/chat/completions",
+                model: "gpt-4o-mini",
+                useBuiltinKey: false
+            },
+            "xai": {
+                url: "https://api.x.ai/v1/chat/completions",
+                model: "grok-2",
+                useBuiltinKey: false
+            },
+            "custom": {
+                url: "",
+                model: "",
+                useBuiltinKey: false
+            }
+        };
+
+        var pendingScript = "";
+        var pendingTitle = "";
+
+        // ===== Provider Change =====
+        function onProviderChange() {
+            var sel = document.getElementById("providerSelect").value;
+            var p = PROVIDERS[sel];
+            document.getElementById("apiUrlInput").value = p.url;
+            document.getElementById("modelInput").value = p.model;
+
+            var tag = document.getElementById("keyStatusTag");
+            if (p.useBuiltinKey) {
+                document.getElementById("apiKeyInput").value = "";
+                document.getElementById("apiKeyInput").placeholder = "使用内置Key或手动输入";
+                tag.innerText = "已内置";
+                tag.style.display = "inline-block";
+            } else {
+                document.getElementById("apiKeyInput").value = "";
+                document.getElementById("apiKeyInput").placeholder = "请输入 API Key";
+                tag.style.display = "none";
+            }
+        }
+
+        // ===== Open Modal =====
+        function openApiModal(title, script) {
+            pendingScript = script;
+            pendingTitle = title;
+            document.getElementById("modalSubtitle").innerText = "即将进入：" + title;
+            document.getElementById("providerSelect").value = "zhipu";
+            onProviderChange();
+
+            var overlay = document.getElementById("apiModal");
+            overlay.style.display = "flex";
+            // Trigger animation
+            requestAnimationFrame(function () {
+                overlay.classList.add("active");
+            });
+        }
+
+        // ===== Close Modal =====
+        function closeModal() {
+            var overlay = document.getElementById("apiModal");
+            overlay.classList.remove("active");
+            setTimeout(function () {
+                overlay.style.display = "none";
+            }, 300);
+        }
+
+        // ===== Confirm Launch =====
+        function confirmLaunch() {
+            var userKey = document.getElementById("apiKeyInput").value;
+            var provider = document.getElementById("providerSelect").value;
+            var p = PROVIDERS[provider];
+
+            var finalKey = "";
+            if (userKey && userKey.trim() !== "") {
+                finalKey = userKey;
+            } else if (p.useBuiltinKey) {
+                finalKey = getDefaultKey();
+            }
+
+            if (!finalKey || finalKey.trim() === "") {
+                showToast("请输入 API Key", true);
+                return;
+            }
+
+            var apiUrl = document.getElementById("apiUrlInput").value;
+            if (!apiUrl || apiUrl.trim() === "") {
+                showToast("请输入 API URL", true);
+                return;
+            }
+
+            // Browser environment: construct streamlit command info
+            var modelName = document.getElementById("modelInput").value;
+
+            // Try launching via bat file association or show instructions
+            try {
+                // For HTA environment
+                if (typeof ActiveXObject !== "undefined") {
+                    var shell = new ActiveXObject("WScript.Shell");
+                    var fso = new ActiveXObject("Scripting.FileSystemObject");
+                    var htaPath = unescape(document.location.pathname);
+                    if (htaPath.charAt(0) === '/') htaPath = htaPath.substring(1);
+                    htaPath = htaPath.replace(/\//g, "\\");
+                    var appDir = fso.GetParentFolderName(htaPath);
+
+                    var env = shell.Environment("PROCESS");
+                    if (provider === "zhipu") env("ZHIPU_API_KEY") = finalKey;
+                    env("LLM_API_KEY") = finalKey;
+
+                    var cmd = 'cmd /c cd /d "' + appDir + '" && streamlit run ' + pendingScript;
+                    shell.Run(cmd, 1, false);
+                    showToast("正在启动游戏：" + pendingTitle + "，请稍候...", false);
+                } else {
+                    // Pure browser: show command for user to run
+                    showToast("请在终端运行: streamlit run " + pendingScript, false);
+                }
+            } catch (e) {
+                showToast("请在项目目录下运行: streamlit run " + pendingScript, false);
+            }
+
+            closeModal();
+        }
+
+        // ===== Toast =====
+        function showToast(msg, isError) {
+            var t = document.getElementById("toast");
+            t.innerText = msg;
+            t.className = isError ? "toast toast-error" : "toast";
+
+            requestAnimationFrame(function () {
+                t.classList.add("visible");
+            });
+
+            setTimeout(function () {
+                t.classList.remove("visible");
+            }, 4000);
+        }
+
+        // ===== ESC to close modal =====
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" || e.keyCode === 27) closeModal();
+        });
+
+        // ===== Click overlay to close =====
+        document.getElementById("apiModal").addEventListener("click", function (e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ===== Background Particles =====
+        (function createParticles() {
+            var canvas = document.getElementById("bgCanvas");
+            var colors = [
+                "rgba(183, 28, 28, 0.3)",
+                "rgba(255, 215, 0, 0.25)",
+                "rgba(135, 206, 235, 0.3)",
+                "rgba(142, 68, 173, 0.25)",
+                "rgba(27, 94, 32, 0.3)"
+            ];
+
+            for (var i = 0; i < 25; i++) {
+                var particle = document.createElement("div");
+                particle.className = "particle";
+                var size = Math.random() * 4 + 2;
+                particle.style.width = size + "px";
+                particle.style.height = size + "px";
+                particle.style.left = Math.random() * 100 + "%";
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = (Math.random() * 20 + 15) + "s";
+                particle.style.animationDelay = (Math.random() * 20) + "s";
+                particle.style.boxShadow = "0 0 " + (size * 3) + "px " + particle.style.background;
+                canvas.appendChild(particle);
+            }
+        })();
+
+        // ===== Theme Switcher =====
+        var THEME_KEY = "guess-history-theme";
+
+        function getSystemPreference() {
+            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+                return "light";
+            }
+            return "dark";
+        }
+
+        function applyResolvedTheme(resolved) {
+            document.documentElement.setAttribute("data-theme", resolved);
+        }
+
+        function updateButtons(mode) {
+            document.getElementById("btnLight").classList.remove("active");
+            document.getElementById("btnSystem").classList.remove("active");
+            document.getElementById("btnDark").classList.remove("active");
+            if (mode === "light") {
+                document.getElementById("btnLight").classList.add("active");
+            } else if (mode === "system") {
+                document.getElementById("btnSystem").classList.add("active");
+            } else {
+                document.getElementById("btnDark").classList.add("active");
+            }
+        }
+
+        function setTheme(mode) {
+            try { localStorage.setItem(THEME_KEY, mode); } catch(e) {}
+            updateButtons(mode);
+
+            if (mode === "system") {
+                applyResolvedTheme(getSystemPreference());
+            } else {
+                applyResolvedTheme(mode);
+            }
+        }
+
+        // Listen for system preference changes (for "system" mode)
+        if (window.matchMedia) {
+            window.matchMedia("(prefers-color-scheme: light)").addEventListener("change", function() {
+                var saved = "system";
+                try { saved = localStorage.getItem(THEME_KEY) || "system"; } catch(e) {}
+                if (saved === "system") {
+                    applyResolvedTheme(getSystemPreference());
+                }
+            });
+        }
+
+        // Initialize theme on load
+        (function initTheme() {
+            var saved = "system";
+            try { saved = localStorage.getItem(THEME_KEY) || "system"; } catch(e) {}
+            setTheme(saved);
+        })();
+    </script>
+</body>
+</html>

@@ -1,3 +1,0 @@
-将exe_01.html中的明朝200人链接到app_01_ming.py ，
-并在跳转前跳出一个输入LLM API的选项（包括市面主流模型接口名称选择），
-软件默认API key为2decccf007f4414b8c71cda0b8e3cf26.TeiHdRMi4Pxs1Fx3的GLM4.5air

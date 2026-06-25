@@ -1,1 +1,1 @@
-streamlit run app_01_02.py
+streamlit run app.py

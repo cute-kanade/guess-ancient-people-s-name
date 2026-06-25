@@ -205,3 +205,101 @@ def is_replay_request(user_input: str) -> bool:
     replay_keywords = ["再来一局", "重新开始", "新一局", "再玩一局", "重新玩"]
     text = user_input.strip().lower()
     return any(kw in text for kw in replay_keywords)
+
+
+def is_doubt_request(user_input: str) -> bool:
+    """检测玩家是否在质疑上一条 AI 回答、请求重答。
+
+    v2.02 引入，用于触发"二次核查"机制。
+    命中后进入批量核查整段聊天记录的分支（v2.03 升级）。
+
+    Args:
+        user_input: 玩家输入文本。
+
+    Returns:
+        是否疑似怀疑 / 请求重答。
+    """
+    doubt_keywords = [
+        "重答", "重新回答", "重新判断", "再确认一下", "再确认",
+        "我怀疑", "答案不对", "答错了吧", "你答错了", "不对吧",
+        "你确定吗", "确定吗", "真的吗", "再想想", "再核实一下",
+        "我觉得不对", "不可能吧", "重新评估",
+    ]
+    text = user_input.strip().lower()
+    return any(kw in text for kw in doubt_keywords)
+
+
+#: 五种规范答案的精确集合（用于判定哪些 assistant 回复属于"事实问答"回合）
+CANONICAL_ANSWERS: frozenset[str] = frozenset({
+    "是。", "否。", "或许是。", "或许不是。", "无可奉告，换个问法吧。",
+})
+
+
+def _is_canonical_answer(answer: str) -> bool:
+    """判断 AI 回复是否属于五种规范答案之一（允许首尾空白与简短前缀）。
+
+    部分模型偶尔会带前缀（如"答：是。"）或后缀，这里做宽松匹配：
+    - 精确命中规范答案集合
+    - 以规范答案开头（兼容"是。这个嘛..."带后缀解释）
+    - 以规范答案结尾（兼容"答：是。"带前缀）
+    - 但限制总长度不超过规范答案 +8 字，避免长文本误判
+    """
+    text = answer.strip()
+    if not text:
+        return False
+    if text in CANONICAL_ANSWERS:
+        return True
+    for c in CANONICAL_ANSWERS:
+        if len(text) <= len(c) + 8 and (text.startswith(c) or text.endswith(c)):
+            return True
+    return False
+
+
+def collect_fact_qa_pairs(messages) -> list[tuple[int, str, str]]:
+    """从历史消息中收集所有"是/否/或许"类事实问答对。
+
+    用于批量重答核查：遍历整段聊天记录，只保留：
+        - user 是正常提问（非开局/投降/提示/怀疑/重玩）
+        - 紧随其后的 assistant 回复属于五种规范答案之一
+
+    Args:
+        messages: 历史消息列表，每项形如 {"role": ..., "content": ...}。
+
+    Returns:
+        Q&A 对列表，每项为 (序号, 玩家提问, AI 回答)，序号从 1 开始递增。
+        仅保留可核查的事实问答回合；其余回合被过滤。
+    """
+    pairs: list[tuple[int, str, str]] = []
+    seq = 0
+    i = 0
+    n = len(messages)
+    while i < n:
+        m = messages[i]
+        if m.get("role") != "user":
+            i += 1
+            continue
+        content = m.get("content", "")
+        # 跳过非正常提问
+        if (
+            not content.strip()
+            or "开始" in content
+            or is_replay_request(content)
+            or is_likely_surrender(content)
+            or is_likely_hint_request(content)
+            or is_doubt_request(content)
+        ):
+            i += 1
+            continue
+        # 找紧随其后的 assistant 回复
+        j = i + 1
+        while j < n and messages[j].get("role") != "assistant":
+            j += 1
+        if j >= n:
+            i += 1
+            continue
+        assistant_reply = messages[j].get("content", "")
+        if _is_canonical_answer(assistant_reply):
+            seq += 1
+            pairs.append((seq, content, assistant_reply))
+        i = j + 1
+    return pairs
