@@ -1,0 +1,1014 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<title>猜历史人物 · 海龟汤 v3.0</title>
+<HTA:APPLICATION
+    ID="GuessApp0303"
+    APPLICATIONNAME="猜历史人物 v3.0"
+    BORDER="thick"
+    BORDERSTYLE="normal"
+    CAPTION="yes"
+    MAXIMIZEBUTTON="yes"
+    MINIMIZEBUTTON="yes"
+    SHOWINTASKBAR="yes"
+    SINGLEINSTANCE="yes"
+    SYSMENU="yes"
+    WINDOWSTATE="maximize"
+    SCROLL="auto"
+    NAVIGABLE="yes"
+/>
+<style>
+    /* ========================================
+       RESET
+       ======================================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ========================================
+       DARK THEME (default)
+       ======================================== */
+    body {
+        min-height: 100vh;
+        font-family: 'Microsoft YaHei', 'SimSun', sans-serif;
+        overflow-x: hidden;
+        background: #0a0a0e;
+        color: #e0e0e8;
+        -ms-transition: background 0.6s, color 0.6s;
+        transition: background 0.6s, color 0.6s;
+    }
+
+    /* ========================================
+       AMBIENT BACKGROUND
+       ======================================== */
+    .ambient-bg {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .ambient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.5;
+    }
+
+    .orb-china {
+        width: 500px; height: 400px;
+        top: 10%; left: 10%;
+        background: rgba(163, 22, 33, 0.08);
+    }
+
+    .orb-europe {
+        width: 450px; height: 350px;
+        bottom: 10%; right: 10%;
+        background: rgba(29, 53, 87, 0.1);
+    }
+
+    /* ========================================
+       LAYOUT CONTAINER
+       ======================================== */
+    .layout-container {
+        position: relative;
+        z-index: 1;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 30px 20px;
+        min-height: 100vh;
+    }
+
+    .main-table {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        margin-top: 30px;
+    }
+
+    .col-left, .col-right {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0 16px;
+    }
+
+    .col-center {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 170px;
+        padding: 0 10px;
+    }
+
+    /* ========================================
+       CENTER TITLE — floating pillar
+       ======================================== */
+    .main-title {
+        display: inline-block;
+        writing-mode: tb-rl;
+        font-family: 'KaiTi', 'STKaiti', serif;
+        font-size: 52px;
+        font-weight: 900;
+        color: #f4e8c1;
+        letter-spacing: 14px;
+        padding: 48px 24px;
+        background: rgba(20, 20, 28, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        position: relative;
+        -ms-transition: transform 0.5s, box-shadow 0.5s;
+        transition: transform 0.5s, box-shadow 0.5s;
+    }
+
+    .main-title:hover {
+        -ms-transform: scale(1.03);
+        transform: scale(1.03);
+        box-shadow: 0 12px 44px rgba(0, 0, 0, 0.4);
+    }
+
+    /* decorative stars */
+    .title-star-top, .title-star-bottom {
+        display: block;
+        text-align: center;
+        color: #d4af37;
+        font-size: 18px;
+        opacity: 0.6;
+        margin: 0 auto;
+    }
+    .title-star-top { margin-bottom: 10px; }
+    .title-star-bottom { margin-top: 10px; }
+
+    /* ========================================
+       ZONE HEADERS — underline style
+       ======================================== */
+    .zone-header {
+        font-family: 'KaiTi', 'STKaiti', serif;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        padding-bottom: 12px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid;
+        letter-spacing: 4px;
+    }
+
+    .zone-header-china {
+        color: #d4af37;
+        border-color: #a31621;
+        text-shadow: 0 0 15px rgba(163, 22, 33, 0.4);
+    }
+
+    .zone-header-europe {
+        color: #e8c37d;
+        border-color: #1d3557;
+        text-shadow: 0 0 15px rgba(29, 53, 87, 0.6);
+    }
+
+    .zone-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+        font-size: 18px;
+        opacity: 0.8;
+    }
+
+    /* ========================================
+       OPTION CARDS — flex row, slide hover
+       ======================================== */
+    .option-card {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        padding: 14px 18px;
+        background: rgba(20, 20, 28, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        color: #e0e0e8;
+        margin-bottom: 10px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        -ms-transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+        transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, color 0.3s;
+    }
+
+    .card-text {
+        display: table-cell;
+        vertical-align: middle;
+        letter-spacing: 2px;
+    }
+
+    .card-tags {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: right;
+        white-space: nowrap;
+        width: 120px;
+    }
+
+    /* China card hover */
+    .china-card:hover {
+        -ms-transform: translateX(6px);
+        transform: translateX(6px);
+        border-color: #d4af37;
+        box-shadow: 0 4px 20px rgba(163, 22, 33, 0.4);
+        color: #d4af37;
+    }
+
+    /* Europe card hover */
+    .europe-card:hover {
+        -ms-transform: translateX(-6px);
+        transform: translateX(-6px);
+        border-color: #e8c37d;
+        box-shadow: 0 4px 20px rgba(29, 53, 87, 0.6);
+        color: #e8c37d;
+    }
+
+    .option-card.disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        filter: grayscale(100%);
+    }
+
+    .option-card.disabled:hover {
+        -ms-transform: none;
+        transform: none;
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: none;
+        color: #e0e0e8;
+    }
+
+    /* ========================================
+       TAGS — monospace capsules
+       ======================================== */
+    .tag {
+        display: inline-block;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border: 1px solid;
+        font-family: 'Consolas', 'Courier New', monospace;
+        margin-left: 4px;
+        vertical-align: middle;
+    }
+
+    .tag-v3 { color: #4ade80; background: rgba(74, 222, 128, 0.1); border-color: rgba(74, 222, 128, 0.3); }
+    .tag-ready { color: #60a5fa; background: rgba(96, 165, 250, 0.1); border-color: rgba(96, 165, 250, 0.3); }
+    .tag-dev { color: #656575; background: rgba(100, 100, 110, 0.1); border-color: rgba(100, 100, 110, 0.3); }
+
+    /* ========================================
+       DIVIDER
+       ======================================== */
+    .divider {
+        height: 1px;
+        background: #222;
+        background: -ms-linear-gradient(left, transparent, rgba(255,255,255,0.08), transparent);
+        margin: 10px 0;
+        border: none;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer-area {
+        margin-top: 40px;
+        padding: 30px 0 16px;
+        text-align: center;
+    }
+
+    .footer-text {
+        color: #656575;
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    .footer-sub {
+        font-family: 'KaiTi', 'STKaiti', serif;
+        color: #656575;
+        font-size: 12px;
+        opacity: 0.7;
+        margin-top: 8px;
+    }
+
+    .footer-ver {
+        font-family: 'Consolas', 'Courier New', monospace;
+        color: #656575;
+        font-size: 11px;
+        opacity: 0.5;
+        margin-top: 4px;
+    }
+
+    /* ========================================
+       THEME SWITCHER
+       ======================================== */
+    .theme-switcher {
+        position: fixed;
+        top: 18px;
+        right: 22px;
+        z-index: 1500;
+        background: rgba(20, 20, 28, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 30px;
+        padding: 4px;
+    }
+
+    .theme-btn {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        color: #656575;
+        font-size: 16px;
+        cursor: pointer;
+        vertical-align: middle;
+        -ms-transition: background 0.3s, color 0.3s;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    .theme-btn:hover { color: #e0e0e8; }
+
+    .theme-btn-active {
+        background: #a31621;
+        color: #f4e8c1;
+        box-shadow: 0 0 10px rgba(163, 22, 33, 0.4);
+    }
+
+    .theme-btn-active:hover {
+        background: #b91c25;
+        color: #f4e8c1;
+    }
+
+    /* ========================================
+       MODAL
+       ======================================== */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2000;
+    }
+
+    .modal-content {
+        background: #0f0f14;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 16px;
+        width: 480px;
+        padding: 32px;
+        color: #e0e0e8;
+        font-family: 'Microsoft YaHei', sans-serif;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -280px;
+        margin-left: -240px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+        text-align: center;
+        margin-bottom: 24px;
+    }
+
+    .modal-title {
+        font-family: 'KaiTi', 'STKaiti', serif;
+        color: #d4af37;
+        font-size: 24px;
+        margin-bottom: 8px;
+        letter-spacing: 3px;
+    }
+
+    .modal-subtitle {
+        font-size: 14px;
+        color: #9a9aa8;
+        background: #0a0a0e;
+        padding: 8px 12px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-label {
+        display: block;
+        font-size: 13px;
+        color: #e0e0e8;
+        margin-bottom: 6px;
+        font-weight: 600;
+    }
+
+    .form-control {
+        width: 100%;
+        background: #0a0a0e;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #e0e0e8;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 14px;
+    }
+
+    .form-control option {
+        background: #0a0a0e;
+        color: #e0e0e8;
+    }
+
+    .hint-text {
+        font-size: 12px;
+        color: #656575;
+        margin-top: 4px;
+    }
+
+    .key-builtin-tag {
+        color: #4ade80;
+        font-size: 12px;
+        margin-left: 8px;
+    }
+
+    .btn-group {
+        margin-top: 28px;
+        text-align: right;
+    }
+
+    .btn {
+        padding: 10px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 14px;
+        border: 1px solid transparent;
+        margin-left: 10px;
+        -ms-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+    .btn-cancel {
+        background: transparent;
+        color: #9a9aa8;
+        border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-cancel:hover {
+        background: rgba(30, 30, 42, 0.85);
+        color: #e0e0e8;
+    }
+
+    .btn-primary {
+        background: #a31621;
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 4px 12px rgba(163, 22, 33, 0.4);
+    }
+
+    .btn-primary:hover {
+        background: #b91c25;
+        -ms-transform: translateY(-2px);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(163, 22, 33, 0.5);
+    }
+
+    .btn-primary:active {
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    /* ========================================
+       TOAST
+       ======================================== */
+    .toast {
+        display: none;
+        position: fixed;
+        top: 30px;
+        left: 50%;
+        margin-left: -200px;
+        width: 400px;
+        background: rgba(30, 30, 42, 0.85);
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        color: #f4e8c1;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        z-index: 3000;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    /* ========================================
+       LIGHT THEME
+       ======================================== */
+    body.theme-light {
+        background: #f7f4ed;
+        color: #3a3229;
+    }
+
+    body.theme-light .ambient-orb { opacity: 0.2; }
+
+    body.theme-light .main-title {
+        color: #2c241b;
+        background: rgba(255, 255, 255, 0.6);
+        border-color: rgba(0,0,0,0.05);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    body.theme-light .title-star-top,
+    body.theme-light .title-star-bottom {
+        color: #b8860b;
+    }
+
+    body.theme-light .zone-header-china {
+        color: #b8860b;
+        border-color: #8a1523;
+        text-shadow: none;
+    }
+
+    body.theme-light .zone-header-europe {
+        color: #8b6914;
+        border-color: #1a365d;
+        text-shadow: none;
+    }
+
+    body.theme-light .option-card {
+        background: rgba(255, 255, 255, 0.7);
+        border-color: rgba(0,0,0,0.08);
+        color: #3a3229;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    body.theme-light .china-card:hover {
+        border-color: #b8860b;
+        color: #8a1523;
+        box-shadow: 0 4px 20px rgba(138, 21, 35, 0.15);
+    }
+
+    body.theme-light .europe-card:hover {
+        border-color: #8b6914;
+        color: #1a365d;
+        box-shadow: 0 4px 20px rgba(26, 54, 93, 0.15);
+    }
+
+    body.theme-light .option-card.disabled:hover {
+        border-color: rgba(0,0,0,0.08);
+        color: #3a3229;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    body.theme-light .tag-v3 { color: #166534; border-color: #166534; background: rgba(22, 101, 52, 0.08); }
+    body.theme-light .tag-ready { color: #1e3a8a; border-color: #1e3a8a; background: rgba(30, 58, 138, 0.06); }
+    body.theme-light .tag-dev { color: #9e9589; border-color: rgba(158, 149, 137, 0.3); background: rgba(158, 149, 137, 0.06); }
+
+    body.theme-light .divider {
+        background: rgba(0,0,0,0.06);
+        background: -ms-linear-gradient(left, transparent, rgba(0,0,0,0.08), transparent);
+    }
+
+    body.theme-light .footer-text,
+    body.theme-light .footer-sub,
+    body.theme-light .footer-ver {
+        color: #9e9589;
+    }
+
+    body.theme-light .theme-switcher {
+        background: rgba(255, 255, 255, 0.7);
+        border-color: rgba(0, 0, 0, 0.08);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    body.theme-light .theme-btn { color: #9e9589; }
+    body.theme-light .theme-btn:hover { color: #3a3229; }
+    body.theme-light .theme-btn-active { background: #8a1523; color: #fff; }
+
+    body.theme-light .modal-overlay { background: rgba(0,0,0,0.3); }
+    body.theme-light .modal-content {
+        background: #faf8f3;
+        border-color: rgba(184, 134, 11, 0.3);
+        color: #3a3229;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    body.theme-light .modal-title { color: #8a1523; }
+    body.theme-light .modal-subtitle { color: #6e6558; background: #f7f4ed; border-color: rgba(0,0,0,0.08); }
+    body.theme-light .form-label { color: #3a3229; }
+    body.theme-light .form-control { background: #f7f4ed; border-color: rgba(0,0,0,0.08); color: #3a3229; }
+    body.theme-light .form-control option { background: #fff; color: #3a3229; }
+    body.theme-light .hint-text { color: #9e9589; }
+    body.theme-light .key-builtin-tag { color: #166534; }
+    body.theme-light .btn-cancel { color: #6e6558; border-color: rgba(0,0,0,0.08); }
+    body.theme-light .btn-cancel:hover { background: rgba(0,0,0,0.04); color: #3a3229; }
+    body.theme-light .toast {
+        background: rgba(250, 248, 243, 0.95);
+        border-color: rgba(184, 134, 11, 0.3);
+        color: #2c241b;
+    }
+</style>
+</head>
+<body>
+
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-china"></div>
+        <div class="ambient-orb orb-europe"></div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher" id="themeSwitcher">
+        <button class="theme-btn" id="btnLight" onclick="setTheme('light')" title="古典卷轴 (亮色)">&#9788;</button>
+        <button class="theme-btn theme-btn-active" id="btnDark" onclick="setTheme('dark')" title="午夜遗迹 (深色)">&#9790;</button>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toastMsg"></div>
+
+    <!-- Main Content -->
+    <div class="layout-container">
+        <div class="main-table" id="mainTable">
+            <!-- Left: China -->
+            <div class="col-left" id="colLeft">
+                <div class="zone-header zone-header-china" id="headerChina">
+                    <span class="zone-icon">&#9673;</span> 华夏纪元
+                </div>
+                <div>
+                    <a class="option-card china-card" onclick="openApiModal('全古代1000人', 'app.py')">
+                        <span class="card-text">全古代1000人</span>
+                        <span class="card-tags"><span class="tag tag-v3">v3.0</span> <span class="tag tag-ready">可用</span></span>
+                    </a>
+                    <a class="option-card china-card" onclick="openApiModal('全古代200人', 'app_03_mini.py')">
+                        <span class="card-text">全古代200人</span>
+                        <span class="card-tags"><span class="tag tag-v3">v3.0</span> <span class="tag tag-ready">可用</span></span>
+                    </a>
+
+                    <div class="divider"></div>
+
+                    <a class="option-card china-card disabled">
+                        <span class="card-text">春秋战国200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">研发中</span></span>
+                    </a>
+                    <a class="option-card china-card disabled">
+                        <span class="card-text">秦汉风云200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">研发中</span></span>
+                    </a>
+                    <a class="option-card china-card disabled">
+                        <span class="card-text">汉末三国200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">研发中</span></span>
+                    </a>
+                    <a class="option-card china-card disabled">
+                        <span class="card-text">盛唐气象200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">研发中</span></span>
+                    </a>
+
+                    <div class="divider"></div>
+
+                    <a class="option-card china-card" onclick="openApiModal('大明王朝200人', 'app_03_ming.py')">
+                        <span class="card-text">大明王朝200人</span>
+                        <span class="card-tags"><span class="tag tag-v3">v3.0</span> <span class="tag tag-ready">可用</span></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Center Title -->
+            <div class="col-center" id="colCenter">
+                <span class="title-star-top">&#10022;</span>
+                <div class="main-title" id="mainTitle">猜历史人物</div>
+                <span class="title-star-bottom">&#10022;</span>
+            </div>
+
+            <!-- Right: Europe -->
+            <div class="col-right" id="colRight">
+                <div class="zone-header zone-header-europe" id="headerEurope">
+                    <span class="zone-icon">&#9816;</span> 欧洲列国
+                </div>
+                <div>
+                    <a class="option-card europe-card disabled">
+                        <span class="card-text">全欧洲500人</span>
+                        <span class="card-tags"><span class="tag tag-dev">编撰中</span></span>
+                    </a>
+                    <a class="option-card europe-card disabled">
+                        <span class="card-text">法兰西200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">编撰中</span></span>
+                    </a>
+                    <a class="option-card europe-card disabled">
+                        <span class="card-text">不列颠200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">编撰中</span></span>
+                    </a>
+                    <a class="option-card europe-card disabled">
+                        <span class="card-text">德意志200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">编撰中</span></span>
+                    </a>
+                    <a class="option-card europe-card disabled">
+                        <span class="card-text">俄罗斯200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">编撰中</span></span>
+                    </a>
+                    <a class="option-card europe-card disabled">
+                        <span class="card-text">古希腊200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">编撰中</span></span>
+                    </a>
+                    <a class="option-card europe-card disabled">
+                        <span class="card-text">古罗马200人</span>
+                        <span class="card-tags"><span class="tag tag-dev">编撰中</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-area">
+            <div class="footer-text">猜历史人物 · 海龟汤 AI 游戏（v3.0 全量重构架构版）</div>
+            <div class="footer-sub">注：本游戏「古代」范围自三皇五帝至辛亥革命（1912），非官方史学界定分界。</div>
+            <div class="footer-ver">GLM-4.5-Air Core · exe_03_03 · 2026</div>
+        </div>
+    </div>
+
+    <!-- API Modal -->
+    <div class="modal-overlay" id="apiModal">
+        <div class="modal-content" id="modalBox">
+            <div class="modal-header">
+                <h2 class="modal-title">传世密钥配置</h2>
+                <div class="modal-subtitle" id="modalSubtitle">即将开启：加载中...</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">智脑核心 (模型提供商)</label>
+                <select class="form-control" id="providerSelect" onchange="onProviderChange()">
+                    <option value="zhipu" selected>智谱AI (GLM-4.5-Air) — 默认推荐</option>
+                    <option value="deepseek">DeepSeek</option>
+                    <option value="openai">OpenAI (GPT-4o-mini)</option>
+                    <option value="xai">xAI (Grok-2)</option>
+                    <option value="custom">自定义节点</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">API Key <span class="key-builtin-tag" id="keyBuiltinTag">(已内置)</span></label>
+                <input type="password" class="form-control" id="apiKeyInput" value="">
+                <div class="hint-text">默认已内置演示凭证（加密存储），亦可输入您自己的Key。</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">API 接入点 (URL)</label>
+                <input type="text" class="form-control" id="apiUrlInput" value="https://open.bigmodel.cn/api/paas/v4/chat/completions">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">指定模型</label>
+                <input type="text" class="form-control" id="modelInput" value="glm-4.5-air">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-cancel" onclick="closeModal()">暂缓</button>
+                <button class="btn btn-primary" onclick="launchGame()">启卷</button>
+            </div>
+        </div>
+    </div>
+
+    <script language="javascript">
+        // ===== XOR Key Decryption =====
+        var _EK = "7e440615437b5112175d1448640313430d0c57540050744d0710422c5d104c0b5c3a251645011a24754054463d45032034";
+        var _XK = "GuessHistoryPerson2026";
+
+        function _dk(hex, xk) {
+            var r = "";
+            for (var i = 0; i < hex.length / 2; i++) {
+                var b = parseInt(hex.substr(i * 2, 2), 16);
+                var x = xk.charCodeAt(i % xk.length);
+                r = r + String.fromCharCode(b ^ x);
+            }
+            return r;
+        }
+
+        var _cachedKey = "";
+        function getDefaultKey() {
+            if (!_cachedKey) { _cachedKey = _dk(_EK, _XK); }
+            return _cachedKey;
+        }
+
+        // ===== Get HTA directory =====
+        function getAppDir() {
+            try {
+                var fso = new ActiveXObject("Scripting.FileSystemObject");
+                var htaPath = unescape(document.location.pathname);
+                if (htaPath.charAt(0) === '/') htaPath = htaPath.substring(1);
+                htaPath = htaPath.replace(/\//g, "\\");
+                return fso.GetParentFolderName(htaPath);
+            } catch(e) {
+                alert("获取路径失败: " + e.message);
+                return "";
+            }
+        }
+
+        // ===== Provider Presets =====
+        var PROVIDERS = {
+            "zhipu": { url: "https://open.bigmodel.cn/api/paas/v4/chat/completions", model: "glm-4.5-air", builtin: true },
+            "deepseek": { url: "https://api.deepseek.com/v1/chat/completions", model: "deepseek-chat", builtin: false },
+            "openai": { url: "https://api.openai.com/v1/chat/completions", model: "gpt-4o-mini", builtin: false },
+            "xai": { url: "https://api.x.ai/v1/chat/completions", model: "grok-2", builtin: false },
+            "custom": { url: "", model: "", builtin: false }
+        };
+
+        var currentScript = "";
+        var currentTitle = "";
+
+        function onProviderChange() {
+            var sel = document.getElementById("providerSelect").value;
+            var p = PROVIDERS[sel];
+            document.getElementById("apiUrlInput").value = p.url;
+            document.getElementById("modelInput").value = p.model;
+
+            var keyInput = document.getElementById("apiKeyInput");
+            var tag = document.getElementById("keyBuiltinTag");
+            if (p.builtin) {
+                keyInput.value = "";
+                tag.innerText = "(已内置)";
+                tag.style.display = "inline";
+            } else {
+                keyInput.value = "";
+                tag.style.display = "none";
+            }
+        }
+
+        function openApiModal(title, script) {
+            currentTitle = title;
+            currentScript = script;
+            document.getElementById("modalSubtitle").innerText = "即将进入卷宗：" + title;
+            document.getElementById("providerSelect").value = "zhipu";
+            onProviderChange();
+            document.getElementById("apiModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("apiModal").style.display = "none";
+        }
+
+        function showToast(msg) {
+            var t = document.getElementById("toastMsg");
+            t.innerText = msg;
+            t.style.display = "block";
+            setTimeout(function() { t.style.display = "none"; }, 3500);
+        }
+
+        function launchGame() {
+            var provider = document.getElementById("providerSelect").value;
+            var userKey = document.getElementById("apiKeyInput").value.replace(/\s/g, "");
+            var p = PROVIDERS[provider];
+
+            var finalKey = "";
+            if (userKey !== "") {
+                finalKey = userKey;
+            } else if (p.builtin) {
+                finalKey = getDefaultKey();
+            }
+
+            if (!finalKey) {
+                alert("请输入 API Key");
+                return;
+            }
+
+            var apiUrl = document.getElementById("apiUrlInput").value.replace(/\s/g, "");
+            if (!apiUrl) {
+                alert("请输入 API 接入点");
+                return;
+            }
+
+            closeModal();
+            showToast("正在终端唤醒：" + currentTitle + "，请稍候...");
+
+            try {
+                var shell = new ActiveXObject("WScript.Shell");
+                var appDir = getAppDir();
+                if (!appDir) return;
+
+                var env = shell.Environment("PROCESS");
+                if (provider === "zhipu") env("ZHIPU_API_KEY") = finalKey;
+                env("LLM_API_KEY") = finalKey;
+
+                var cmd = 'cmd /c cd /d "' + appDir + '" && streamlit run ' + currentScript;
+                shell.Run(cmd, 1, false);
+            } catch(e) {
+                showToast("启动失败: " + e.message);
+            }
+        }
+
+        // ===== ESC close =====
+        document.onkeydown = function(e) {
+            e = e || window.event;
+            if (e.keyCode === 27) closeModal();
+        };
+
+        // ===== Responsive Scaling (JS) =====
+        function handleResize() {
+            var w = document.body.clientWidth || document.documentElement.clientWidth || 1024;
+            var scale = Math.max(0.45, Math.min(1, w / 1400));
+
+            // Main title
+            var mt = document.getElementById("mainTitle");
+            if (mt) {
+                mt.style.fontSize = Math.round(52 * scale) + "px";
+                mt.style.padding = Math.round(48 * scale) + "px " + Math.round(24 * scale) + "px";
+                mt.style.letterSpacing = Math.round(14 * scale) + "px";
+            }
+
+            // Zone headers
+            var hc = document.getElementById("headerChina");
+            var he = document.getElementById("headerEurope");
+            var hSize = Math.max(16, Math.round(24 * scale)) + "px";
+            if (hc) hc.style.fontSize = hSize;
+            if (he) he.style.fontSize = hSize;
+
+            // Option cards
+            var optSize = Math.max(12, Math.round(16 * scale));
+            var optPad = Math.round(14 * scale) + "px " + Math.round(18 * scale) + "px";
+            var opts = document.getElementsByTagName("a");
+            for (var i = 0; i < opts.length; i++) {
+                if (opts[i].className.indexOf("option-card") >= 0) {
+                    opts[i].style.fontSize = optSize + "px";
+                    opts[i].style.padding = optPad;
+                }
+            }
+
+            // Tags
+            var tagSize = Math.max(9, Math.round(11 * scale)) + "px";
+            var tags = document.getElementsByTagName("span");
+            for (var j = 0; j < tags.length; j++) {
+                if (tags[j].className.indexOf("tag") >= 0) {
+                    tags[j].style.fontSize = tagSize;
+                }
+            }
+
+            // Center column width
+            var cc = document.getElementById("colCenter");
+            if (cc) cc.style.width = Math.round(170 * scale) + "px";
+
+            // Cell padding
+            var cells = [document.getElementById("colLeft"), document.getElementById("colRight")];
+            for (var k = 0; k < cells.length; k++) {
+                if (cells[k]) cells[k].style.padding = "0 " + Math.round(16 * scale) + "px";
+            }
+
+            // Theme switcher
+            var sw = document.getElementById("themeSwitcher");
+            if (sw) {
+                var bSize = Math.max(24, Math.round(32 * scale));
+                var btns = sw.getElementsByTagName("button");
+                for (var b = 0; b < btns.length; b++) {
+                    btns[b].style.width = bSize + "px";
+                    btns[b].style.height = bSize + "px";
+                    btns[b].style.lineHeight = bSize + "px";
+                    btns[b].style.fontSize = Math.max(12, Math.round(16 * scale)) + "px";
+                }
+            }
+        }
+
+        handleResize();
+        window.onresize = handleResize;
+
+        // ===== Theme Switcher =====
+        var THEME_KEY = "guess-history-theme-03";
+        var currentMode = "dark";
+
+        function applyTheme(isDark) {
+            var bd = document.body;
+            bd.className = bd.className.replace(/\btheme-light\b/g, "").replace(/\s+/g, " ").replace(/^\s|\s$/g, "");
+            if (!isDark) {
+                bd.className = bd.className + " theme-light";
+            }
+        }
+
+        function updateThemeButtons(mode) {
+            var btnL = document.getElementById("btnLight");
+            var btnD = document.getElementById("btnDark");
+            btnL.className = "theme-btn";
+            btnD.className = "theme-btn";
+            if (mode === "light") {
+                btnL.className = "theme-btn theme-btn-active";
+            } else {
+                btnD.className = "theme-btn theme-btn-active";
+            }
+        }
+
+        function setTheme(mode) {
+            currentMode = mode;
+            try { localStorage.setItem(THEME_KEY, mode); } catch(e) {}
+            updateThemeButtons(mode);
+            applyTheme(mode === "dark");
+        }
+
+        // Init
+        (function() {
+            var saved = "dark";
+            try { saved = localStorage.getItem(THEME_KEY) || "dark"; } catch(e) {}
+            setTheme(saved);
+        })();
+    </script>
+</body>
+</html>

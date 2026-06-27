@@ -28,8 +28,8 @@ from game_state import collect_fact_qa_pairs
 # =========================
 
 DEFAULT_API_KEY = "2decccf007f4414b8c71cda0b8e3cf26.TeiHdRMi4Pxs1Fx3"
-DEFAULT_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-DEFAULT_MODEL = "glm-4-air"
+DEFAULT_API_URL = os.getenv("LLM_API_URL", "https://open.bigmodel.cn/api/paas/v4/chat/completions")
+DEFAULT_MODEL = os.getenv("LLM_MODEL", "glm-4.5-air")
 
 #: 常规回答温度（v2.02 降低以减少事实性错误）
 ANSWER_TEMPERATURE: float = 0.3
@@ -49,7 +49,7 @@ BATCH_SIZE: int = 10
 ENV_PROVIDERS = {
     "DeepSeek":        ("DEEPSEEK_API_KEY", "https://api.deepseek.com/v1/chat/completions", "deepseek-chat"),
     "OpenAI":          ("OPENAI_API_KEY",   "https://api.openai.com/v1/chat/completions",   "gpt-4o-mini"),
-    "智谱AI (GLM)":     ("ZHIPU_API_KEY",    "https://open.bigmodel.cn/api/paas/v4/chat/completions", "glm-4-air"),
+    "智谱AI (GLM)":     ("ZHIPU_API_KEY",    "https://open.bigmodel.cn/api/paas/v4/chat/completions", "glm-4.5-air"),
     "xAI (Grok)":      ("XAI_API_KEY",      "https://api.x.ai/v1/chat/completions",         "grok-2"),
     "自定义环境变量":     ("", "", ""),  # 占位，由用户手动输入
 }
@@ -66,7 +66,7 @@ def detect_env_providers():
         if name == "自定义环境变量":
             key = os.getenv("CUSTOM_ENV_KEY", "")
             url = os.getenv("CUSTOM_ENV_URL", "https://open.bigmodel.cn/api/paas/v4/chat/completions")
-            model = os.getenv("CUSTOM_ENV_MODEL", "glm-4-air")
+            model = os.getenv("CUSTOM_ENV_MODEL", "glm-4.5-air")
             has_key = bool(key and key.strip())
         else:
             key = os.getenv(env_var, "")

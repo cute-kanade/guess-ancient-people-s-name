@@ -19,8 +19,8 @@ from dataclasses import dataclass
 #   3. 环境变量 ZHIPU_API_KEY
 # 若都未设置，app 层会提示用户在侧栏手动输入。
 
-DEFAULT_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
-DEFAULT_MODEL = "glm-4-air"
+DEFAULT_API_URL = os.getenv("LLM_API_URL", "https://open.bigmodel.cn/api/paas/v4/chat/completions")
+DEFAULT_MODEL = os.getenv("LLM_MODEL", "glm-4.5-air")
 
 
 def resolve_default_api_key(st_secrets=None) -> str:
