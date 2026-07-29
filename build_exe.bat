@@ -1,21 +1,15 @@
 @echo off
 chcp 65001 >nul
-REM =========================================================
-REM 猜历史人物 · 单 exe 打包脚本
-REM 前置：pip install -r requirements_exe.txt
-REM 产物：dist\GuessHistory.exe
-REM =========================================================
-echo [1/3] 校验依赖...
-python -c "import streamlit, requests, PyInstaller" 2>nul || (echo 缺少依赖，请先执行 pip install -r requirements_exe.txt & pause & exit /b 1)
-
-echo [2/3] 清理旧产物...
-if exist dist\GuessHistory.exe del /q dist\GuessHistory.exe
-if exist build\GuessHistory rmdir /s /q build\GuessHistory
-
-echo [3/3] PyInstaller 打包（首次较慢，约 3-8 分钟）...
-python -m PyInstaller --noconfirm --clean build_exe.spec
-if errorlevel 1 (
-    echo.  & echo 打包失败。
-    pause & exit /b 1
-)
-echo. & echo 完成：dist\GuessHistory.exe
+setlocal
+echo [1/4] 验证 M5 Launcher 与数据...
+python -m pytest -q tests\test_m5_launcher.py -p no:cacheprovider || exit /b 1
+python scripts\validate_v4_data.py || exit /b 1
+echo [2/4] 验证构建依赖...
+python -c "import streamlit, requests, PyInstaller" || exit /b 1
+echo [3/4] 构建单文件 EXE...
+python -m PyInstaller --noconfirm --clean build_exe.spec || exit /b 1
+echo [4/4] 检查产物...
+if not exist dist\GuessHistory.exe exit /b 1
+for %%I in (dist\GuessHistory.exe) do if %%~zI LEQ 0 exit /b 1
+echo 构建完成：dist\GuessHistory.exe
+endlocal

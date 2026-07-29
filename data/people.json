@@ -1,11 +1,1882 @@
 [
   {
+    "name": "黄帝",
+    "dynasty": "上古",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "轩辕氏"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "黄帝是华夏民族的人文始祖，传说中统一华夏部落，开创中华文明。"
+  },
+  {
+    "name": "炎帝",
+    "dynasty": "上古",
+    "gender": "男",
+    "identity": [
+      "部落首领",
+      "中华始祖",
+      "农业之神",
+      "医药之神"
+    ],
+    "titles": [
+      "三皇五帝之一",
+      "中华人文始祖"
+    ],
+    "aliases": [
+      "神农氏",
+      "连山氏",
+      "烈山氏"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "中国古代传说中的部落首领，号神农氏，教民农耕，尝百草，与黄帝共同被尊为中华始祖。"
+  },
+  {
+    "name": "尧",
+    "dynasty": "上古",
+    "gender": "男",
+    "identity": [
+      "部落首领",
+      "政治家"
+    ],
+    "titles": [
+      "五帝之一"
+    ],
+    "aliases": [
+      "唐尧"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "上古五帝之一，以仁德治天下，禅让帝位于舜，开创禅让制先河。"
+  },
+  {
+    "name": "舜",
+    "dynasty": "上古",
+    "gender": "男",
+    "identity": [
+      "帝王",
+      "政治家",
+      "圣君"
+    ],
+    "titles": [
+      "五帝"
+    ],
+    "aliases": [
+      "舜帝",
+      "重华"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "舜是上古五帝之一，以孝德闻名，受尧禅让即位，开创了禅让制典范。"
+  },
+  {
+    "name": "禹",
+    "dynasty": "上古",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "水利工程师",
+      "君主"
+    ],
+    "titles": [],
+    "aliases": [
+      "大禹",
+      "夏禹",
+      "戎禹"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "夏朝开国君主，以治理洪水闻名，建立中国历史上第一个朝代。"
+  },
+  {
+    "name": "帝辛",
+    "dynasty": "上古",
+    "gender": "男",
+    "identity": [
+      "皇帝"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "商朝末代君主，史称纣王，以暴虐著称，在牧野之战中兵败自焚。"
+  },
+  {
+    "name": "妲己",
+    "dynasty": "先秦",
+    "gender": "女",
+    "identity": [
+      "妃子",
+      "历史人物"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "商纣王宠妃，以美貌和祸国殃民著称，常被文学作品描绘为红颜祸水。"
+  },
+  {
+    "name": "周文王",
+    "dynasty": "先秦",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "思想家"
+    ],
+    "titles": [
+      "周朝奠基人"
+    ],
+    "aliases": [
+      "姬昌"
+    ],
+    "year_birth": -1152,
+    "year_death": -1056,
+    "summary": "周文王姬昌是西周奠基人，广施仁政，为武王伐纣奠定基础。"
+  },
+  {
+    "name": "周武王",
+    "dynasty": "先秦",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "武王"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "周朝开国君主，灭商建周，推行分封制，被尊为古代圣王。"
+  },
+  {
+    "name": "周公旦",
+    "dynasty": "先秦",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "思想家",
+      "文臣"
+    ],
+    "titles": [
+      "元圣",
+      "儒学先驱"
+    ],
+    "aliases": [
+      "姬旦",
+      "叔旦"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "西周初年政治家，辅佐成王，制礼作乐，奠定周朝八百年基业。"
+  },
+  {
+    "name": "姜子牙",
+    "dynasty": "先秦",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "思想家"
+    ],
+    "titles": [],
+    "aliases": [
+      "姜尚",
+      "吕尚",
+      "太公望",
+      "师尚父"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "周朝开国功臣，辅佐武王伐纣，建立周朝，被尊为兵家鼻祖和齐文化创始人。"
+  },
+  {
+    "name": "周幽王",
+    "dynasty": "先秦",
+    "gender": "男",
+    "identity": [
+      "皇帝"
+    ],
+    "titles": [],
+    "aliases": [
+      "姬宫湦"
+    ],
+    "year_birth": null,
+    "year_death": -771,
+    "summary": "西周末代君主，因宠爱褒姒、烽火戏诸侯而导致国都陷落，西周灭亡。"
+  },
+  {
+    "name": "褒姒",
+    "dynasty": "先秦",
+    "gender": "女",
+    "identity": [
+      "宠妃",
+      "美女"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "西周周幽王宠妃，以烽火戏诸侯著称，被视为导致西周灭亡的红颜祸水。"
+  },
+  {
+    "name": "齐桓公",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "诸侯",
+      "霸主"
+    ],
+    "titles": [
+      "春秋五霸"
+    ],
+    "aliases": [
+      "公子小白"
+    ],
+    "year_birth": null,
+    "year_death": -643,
+    "summary": "春秋时期齐国国君，尊王攘夷，成为首位霸主。"
+  },
+  {
+    "name": "管仲",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "思想家",
+      "军事家"
+    ],
+    "titles": [
+      "春秋第一相"
+    ],
+    "aliases": [
+      "字仲",
+      "号夷吾"
+    ],
+    "year_birth": -723,
+    "year_death": -645,
+    "summary": "春秋时期齐国名相，辅佐齐桓公成为春秋首霸，推行尊王攘夷，改革内政经济。"
+  },
+  {
+    "name": "晋文公",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家"
+    ],
+    "titles": [
+      "春秋五霸"
+    ],
+    "aliases": [
+      "姬重耳"
+    ],
+    "year_birth": -697,
+    "year_death": -628,
+    "summary": "春秋时期晋国君主，流亡十九年后回国即位，励精图治，成为春秋五霸之一。"
+  },
+  {
+    "name": "老子",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "哲学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "李耳",
+      "字聃",
+      "号老子",
+      "老聃"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "中国古代思想家、哲学家，道家学派创始人，主张无为而治。"
+  },
+  {
+    "name": "孔子",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "政治家",
+      "教育家",
+      "儒家学派创始人"
+    ],
+    "titles": [
+      "至圣先师"
+    ],
+    "aliases": [
+      "仲尼"
+    ],
+    "year_birth": -551,
+    "year_death": -479,
+    "summary": "中国古代伟大的思想家、教育家，儒家学派创始人，其思想影响中国及东亚数千年。"
+  },
+  {
+    "name": "孙武",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "军事家",
+      "思想家"
+    ],
+    "titles": [
+      "兵圣",
+      "孙子"
+    ],
+    "aliases": [
+      "字长卿"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "春秋时期著名军事家，被誉为兵圣，著有《孙子兵法》，影响深远。"
+  },
+  {
+    "name": "勾践",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "君主",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": -520,
+    "year_death": -465,
+    "summary": "春秋时期越国君主，卧薪尝胆，最终灭吴称霸，是著名的复仇与中兴之主。"
+  },
+  {
+    "name": "范蠡",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "经济学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字少伯",
+      "号陶朱公",
+      "商圣"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "辅佐越王勾践灭吴，后弃政从商，成为巨富，被尊为商圣。"
+  },
+  {
+    "name": "西施",
+    "dynasty": "春秋",
+    "gender": "女",
+    "identity": [
+      "美女",
+      "间谍"
+    ],
+    "titles": [
+      "四大美女"
+    ],
+    "aliases": [
+      "西子"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "春秋时期越国美女，被献给吴王夫差，助越王勾践灭吴。"
+  },
+  {
+    "name": "伍子胥",
+    "dynasty": "春秋",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "伍员",
+      "子胥"
+    ],
+    "year_birth": null,
+    "year_death": -484,
+    "summary": "春秋时期吴国大夫，助吴王阖闾成就霸业，以复仇故事著称，后被赐死。"
+  },
+  {
+    "name": "商鞅",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "思想家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "卫鞅",
+      "公孙鞅",
+      "商君"
+    ],
+    "year_birth": -390,
+    "year_death": -338,
+    "summary": "战国时期法家代表人物，通过变法使秦国富强，为秦统一六国奠定基础。"
+  },
+  {
+    "name": "苏秦",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "外交家",
+      "纵横家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -284,
+    "summary": "战国时期纵横家、外交家，提出合纵六国以抗秦的策略，曾佩六国相印。"
+  },
+  {
+    "name": "张仪",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "纵横家",
+      "外交家",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": -366,
+    "year_death": -309,
+    "summary": "战国时期纵横家，以连横之术游说六国事秦，破坏合纵，助秦扩张。"
+  },
+  {
+    "name": "白起",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "战国四大名将"
+    ],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -257,
+    "summary": "战国时期秦国名将，长平之战坑杀赵军数十万，人称“人屠”。"
+  },
+  {
+    "name": "廉颇",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "战国四大名将"
+    ],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "战国时期赵国名将，以勇猛善战和负荆请罪典故闻名，晚年因遭猜忌投奔魏国，最终客死楚地。"
+  },
+  {
+    "name": "蔺相如",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "战国时期赵国著名政治家、外交家，以完璧归赵、渑池之会、将相和等典故闻名。"
+  },
+  {
+    "name": "荆轲",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "刺客"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -227,
+    "summary": "荆轲是战国末期著名刺客，受燕太子丹派遣刺杀秦王嬴政，事败被杀。"
+  },
+  {
+    "name": "屈原",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "屈平",
+      "字原"
+    ],
+    "year_birth": -340,
+    "year_death": -278,
+    "summary": "战国时期楚国诗人、政治家，创立楚辞体，代表作《离骚》，中国浪漫主义文学奠基人。"
+  },
+  {
+    "name": "孟子",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "教育家",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子舆"
+    ],
+    "year_birth": -372,
+    "year_death": -289,
+    "summary": "战国时期儒家代表人物，继承孔子学说，主张性善论、仁政，被尊为'亚圣'。"
+  },
+  {
+    "name": "庄子",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "文学家",
+      "哲学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "庄周"
+    ],
+    "year_birth": -369,
+    "year_death": -286,
+    "summary": "战国时期道家学派代表人物，继承老子思想，著有《庄子》，主张逍遥自由、齐物论。"
+  },
+  {
+    "name": "墨子",
+    "dynasty": "战国",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "科学家",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "墨翟"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "春秋战国时期思想家、科学家，墨家学派创始人，提出兼爱非攻等主张。"
+  },
+  {
+    "name": "李斯",
+    "dynasty": "秦",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "文臣",
+      "思想家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": -280,
+    "year_death": -208,
+    "summary": "秦朝著名政治家、文学家和书法家，辅助秦始皇统一六国，推行郡县制、统一文字等。"
+  },
+  {
+    "name": "秦始皇",
+    "dynasty": "秦",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "嬴政",
+      "祖龙"
+    ],
+    "year_birth": -259,
+    "year_death": -210,
+    "summary": "中国历史上第一位统一六国的皇帝，建立了中央集权制度，推行书同文、车同轨等政策。"
+  },
+  {
+    "name": "赵高",
+    "dynasty": "秦",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "文臣"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -207,
+    "summary": "秦朝宦官、权臣，指鹿为马，专权乱政，加速秦朝灭亡。"
+  },
+  {
+    "name": "陈胜",
+    "dynasty": "秦",
+    "gender": "男",
+    "identity": [
+      "农民军领袖",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字涉"
+    ],
+    "year_birth": null,
+    "year_death": -208,
+    "summary": "秦末农民起义领袖，发动大泽乡起义，建立张楚政权，反抗暴秦统治。"
+  },
+  {
+    "name": "项羽",
+    "dynasty": "秦",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "项籍",
+      "字羽"
+    ],
+    "year_birth": -232,
+    "year_death": -202,
+    "summary": "秦末著名军事家，力能扛鼎，率军推翻秦朝，自封西楚霸王，后在楚汉战争中兵败自刎。"
+  },
+  {
+    "name": "范增",
+    "dynasty": "秦",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "谋士",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -204,
+    "summary": "秦末著名谋士，项羽尊为亚父，献计鸿门宴未纳，后遭离间，愤而离去，病逝途中。"
+  },
+  {
+    "name": "虞姬",
+    "dynasty": "秦",
+    "gender": "女",
+    "identity": [
+      "宠妾",
+      "美人"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "西楚霸王项羽的宠妾，以忠贞不渝和悲歌自刎的传说闻名后世。"
+  },
+  {
+    "name": "刘邦",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "沛公",
+      "汉王"
+    ],
+    "year_birth": -256,
+    "year_death": -195,
+    "summary": "西汉开国皇帝，推翻秦朝，击败项羽，建立汉朝，实行休养生息政策。"
+  },
+  {
+    "name": "吕雉",
+    "dynasty": "西汉",
+    "gender": "女",
+    "identity": [
+      "政治家",
+      "皇后",
+      "太后"
+    ],
+    "titles": [],
+    "aliases": [
+      "吕后"
+    ],
+    "year_birth": null,
+    "year_death": -180,
+    "summary": "西汉开国皇后，中国历史上第一位临朝称制的女性统治者，以果断政治手段稳定汉初政局。"
+  },
+  {
+    "name": "张良",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "谋士"
+    ],
+    "titles": [],
+    "aliases": [
+      "子房"
+    ],
+    "year_birth": -250,
+    "year_death": -186,
+    "summary": "西汉开国谋臣，运筹帷幄，助刘邦灭秦楚，封留侯。"
+  },
+  {
+    "name": "萧何",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [
+      "汉初三杰",
+      "酂侯"
+    ],
+    "aliases": [],
+    "year_birth": -257,
+    "year_death": -193,
+    "summary": "西汉开国功臣、政治家，辅佐刘邦建立汉朝，制定律令，推行与民休息政策。"
+  },
+  {
+    "name": "韩信",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -196,
+    "summary": "西汉开国功臣，杰出的军事家，被后人誉为“兵仙”和“神帅”。"
+  },
+  {
+    "name": "刘彻",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": -156,
+    "year_death": -87,
+    "summary": "西汉第七位皇帝，独尊儒术，北击匈奴，开疆拓土，奠定汉朝盛世基业。"
+  },
+  {
+    "name": "卫青",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字仲卿"
+    ],
+    "year_birth": null,
+    "year_death": -106,
+    "summary": "西汉名将，多次率军击败匈奴，官至大将军，封长平侯。"
+  },
+  {
+    "name": "霍去病",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": -140,
+    "year_death": -117,
+    "summary": "西汉名将，官至大司马骠骑将军，封冠军侯，以勇猛善战闻名，曾六击匈奴。"
+  },
+  {
+    "name": "李广",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "飞将军"
+    ],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -119,
+    "summary": "西汉名将，以勇猛善射著称，数度抗击匈奴，但未能封侯，终因迷路自尽。"
+  },
+  {
+    "name": "张骞",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "外交家",
+      "探险家",
+      "政治家"
+    ],
+    "titles": [
+      "博望侯"
+    ],
+    "aliases": [
+      "字子文"
+    ],
+    "year_birth": -164,
+    "year_death": -114,
+    "summary": "西汉外交家，奉汉武帝之命两次出使西域，开辟了丝绸之路。"
+  },
+  {
+    "name": "苏武",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子卿"
+    ],
+    "year_birth": -140,
+    "year_death": -60,
+    "summary": "西汉名臣，出使匈奴十九年持节不屈，被扣北海牧羊，以忠贞气节著称于世。"
+  },
+  {
+    "name": "司马相如",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "政治家"
+    ],
+    "titles": [
+      "汉赋四大家"
+    ],
+    "aliases": [
+      "字长卿"
+    ],
+    "year_birth": -179,
+    "year_death": -118,
+    "summary": "西汉著名辞赋家，代表作《子虚赋》《上林赋》，工于辞藻，为汉赋代表作家。"
+  },
+  {
+    "name": "司马迁",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "史学家",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子长"
+    ],
+    "year_birth": -145,
+    "year_death": -86,
+    "summary": "西汉史学家、文学家，著《史记》，开创纪传体通史先河。"
+  },
+  {
+    "name": "王昭君",
+    "dynasty": "西汉",
+    "gender": "女",
+    "identity": [
+      "历史人物"
+    ],
+    "titles": [
+      "四大美女"
+    ],
+    "aliases": [
+      "王嫱",
+      "明妃"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "王昭君，西汉宫女，出塞和亲匈奴，促进民族和平，被誉为中国古代四大美女之一。"
+  },
+  {
+    "name": "赵飞燕",
+    "dynasty": "西汉",
+    "gender": "女",
+    "identity": [
+      "后妃",
+      "舞蹈家"
+    ],
+    "titles": [
+      "四大美女"
+    ],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": -1,
+    "summary": "西汉成帝皇后，以美貌和舞技著称，是古代四大美女之一。"
+  },
+  {
+    "name": "王莽",
+    "dynasty": "西汉",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "改革家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字巨君"
+    ],
+    "year_birth": -45,
+    "year_death": 23,
+    "summary": "新朝建立者，推行托古改制，引发社会动荡，最终被绿林军所杀。"
+  },
+  {
+    "name": "刘秀",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字文叔"
+    ],
+    "year_birth": -5,
+    "year_death": 57,
+    "summary": "东汉开国皇帝，以柔道治国，平定割据，实现光武中兴。"
+  },
+  {
+    "name": "班超",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "外交家",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字仲升"
+    ],
+    "year_birth": 32,
+    "year_death": 102,
+    "summary": "东汉军事家、外交家，投笔从戎，出使西域，重建西域都护，封定远侯。"
+  },
+  {
+    "name": "张衡",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "科学家",
+      "文学家",
+      "政治家",
+      "发明家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字平子"
+    ],
+    "year_birth": 78,
+    "year_death": 139,
+    "summary": "东汉著名科学家、文学家，发明地动仪与浑天仪，著有《二京赋》《归田赋》等。"
+  },
+  {
+    "name": "蔡伦",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "科学家",
+      "宦官"
+    ],
+    "titles": [
+      "龙亭侯"
+    ],
+    "aliases": [
+      "字敬仲"
+    ],
+    "year_birth": 63,
+    "year_death": 121,
+    "summary": "东汉宦官，改进造纸术，制成蔡侯纸，被封为龙亭侯，推动文化传播。"
+  },
+  {
+    "name": "华佗",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "医学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字元化"
+    ],
+    "year_birth": null,
+    "year_death": 208,
+    "summary": "东汉末年著名医学家，精于外科手术，发明麻沸散，被后世尊为外科鼻祖。"
+  },
+  {
+    "name": "张仲景",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "医学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "张机",
+      "字仲景"
+    ],
+    "year_birth": 150,
+    "year_death": 219,
+    "summary": "东汉著名医学家，著有《伤寒杂病论》，奠定了中医临床辨证论治基础，被后世尊为医圣。"
+  },
+  {
+    "name": "董卓",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "政治家",
+      "权臣"
+    ],
+    "titles": [],
+    "aliases": [
+      "字仲颖"
+    ],
+    "year_birth": 132,
+    "year_death": 192,
+    "summary": "东汉末年权臣，废少帝立献帝，专权暴虐，引发诸侯讨伐，最终被吕布所杀。"
+  },
+  {
+    "name": "吕布",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军阀"
+    ],
+    "titles": [],
+    "aliases": [
+      "字奉先"
+    ],
+    "year_birth": null,
+    "year_death": 199,
+    "summary": "东汉末年名将，以勇武著称，先后依附丁原、董卓、袁绍等，终被曹操击败于下邳。"
+  },
+  {
+    "name": "袁绍",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "将领"
+    ],
+    "titles": [],
+    "aliases": [
+      "字本初"
+    ],
+    "year_birth": null,
+    "year_death": 202,
+    "summary": "东汉末年军阀，出身四世三公，占据河北，官渡之战中被曹操击败，后病逝。"
+  },
+  {
+    "name": "曹操",
+    "dynasty": "东汉",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "文学家",
+      "诗人"
+    ],
+    "titles": [],
+    "aliases": [
+      "字孟德",
+      "小名阿瞒"
+    ],
+    "year_birth": 155,
+    "year_death": 220,
+    "summary": "东汉末年著名政治家、军事家、文学家，曹魏政权奠基人，以统一北方和诗歌成就闻名。"
+  },
+  {
+    "name": "刘备",
+    "dynasty": "蜀汉",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字玄德"
+    ],
+    "year_birth": 161,
+    "year_death": 223,
+    "summary": "三国时期蜀汉开国皇帝，以仁义著称，与曹操、孙权鼎足三分天下。"
+  },
+  {
+    "name": "孙权",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "孙仲谋",
+      "吴大帝"
+    ],
+    "year_birth": 182,
+    "year_death": 252,
+    "summary": "三国时期吴国开国皇帝，善用人识人，稳固江东，形成鼎立之势。"
+  },
+  {
+    "name": "诸葛亮",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "文学家",
+      "发明家"
+    ],
+    "titles": [
+      "卧龙",
+      "武侯"
+    ],
+    "aliases": [
+      "字孔明",
+      "号卧龙"
+    ],
+    "year_birth": 181,
+    "year_death": 234,
+    "summary": "三国蜀汉丞相，杰出的政治家军事家，鞠躬尽瘁死而后已。"
+  },
+  {
+    "name": "关羽",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "武圣",
+      "蜀汉五虎上将"
+    ],
+    "aliases": [
+      "字云长",
+      "美髯公"
+    ],
+    "year_birth": 160,
+    "year_death": 220,
+    "summary": "三国时期蜀汉名将，以忠勇仁义著称，被后世尊为武圣，与刘备、张飞结义，镇守荆州，威震华夏。"
+  },
+  {
+    "name": "张飞",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "蜀汉五虎上将"
+    ],
+    "aliases": [
+      "字翼德"
+    ],
+    "year_birth": 165,
+    "year_death": 221,
+    "summary": "东汉末年蜀汉名将，勇猛过人，与关羽并称万人敌，位列蜀汉五虎上将。"
+  },
+  {
+    "name": "赵云",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "蜀汉五虎上将"
+    ],
+    "aliases": [
+      "字子龙"
+    ],
+    "year_birth": null,
+    "year_death": -229,
+    "summary": "三国时期蜀汉名将，跟随刘备征战，长坂坡救阿斗，以忠勇著称。"
+  },
+  {
+    "name": "庞统",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "谋士",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字士元"
+    ],
+    "year_birth": 179,
+    "year_death": 214,
+    "summary": "三国时期刘备帐下谋士，与诸葛亮齐名，号为凤雏。"
+  },
+  {
+    "name": "姜维",
+    "dynasty": "蜀汉",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字伯约"
+    ],
+    "year_birth": 202,
+    "year_death": 264,
+    "summary": "三国时期蜀汉著名将领，诸葛亮死后继承北伐事业，力图复兴汉室。"
+  },
+  {
+    "name": "张辽",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "五子良将"
+    ],
+    "aliases": [
+      "字文远"
+    ],
+    "year_birth": 169,
+    "year_death": 222,
+    "summary": "三国时期曹魏名将，五子良将之一，勇猛善战，合肥之战以八百骑破孙权十万众。"
+  },
+  {
+    "name": "郭嘉",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "谋士",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字奉孝"
+    ],
+    "year_birth": 170,
+    "year_death": 207,
+    "summary": "三国时期曹操帐下著名谋士，足智多谋，为曹操统一北方作出重大贡献。"
+  },
+  {
+    "name": "司马懿",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字仲达"
+    ],
+    "year_birth": 179,
+    "year_death": 251,
+    "summary": "三国时期曹魏政治家、军事家，西晋奠基人，以谋略著称，发动高平陵之变掌握魏国大权。"
+  },
+  {
+    "name": "司马昭",
+    "dynasty": "魏",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "将领"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子上"
+    ],
+    "year_birth": 211,
+    "year_death": 265,
+    "summary": "三国时期魏国权臣，西晋奠基人，发动高平陵之变，灭蜀汉。"
+  },
+  {
+    "name": "周瑜",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字公瑾"
+    ],
+    "year_birth": 175,
+    "year_death": 210,
+    "summary": "东汉末年名将，辅佐孙策、孙权，赤壁之战以火攻大破曹军，奠定三分天下基础。"
+  },
+  {
+    "name": "鲁肃",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "外交家"
+    ],
+    "titles": [],
+    "aliases": [
+      "子敬"
+    ],
+    "year_birth": 172,
+    "year_death": 217,
+    "summary": "东吴战略家，提出榻上策，促成孙刘联盟，在赤壁之战和借荆州中发挥关键作用。"
+  },
+  {
+    "name": "吕蒙",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子明"
+    ],
+    "year_birth": null,
+    "year_death": 220,
+    "summary": "东吴名将，以白衣渡江奇袭荆州、击败关羽著称。"
+  },
+  {
+    "name": "陆逊",
+    "dynasty": "吴",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字伯言"
+    ],
+    "year_birth": 183,
+    "year_death": 245,
+    "summary": "三国时期吴国名将，夷陵之战中大败刘备，官至丞相，智勇兼备。"
+  },
+  {
+    "name": "曹丕",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子桓"
+    ],
+    "year_birth": 187,
+    "year_death": 226,
+    "summary": "曹丕是魏国的开国皇帝，建安文学的代表人物之一，推动了九品中正制。"
+  },
+  {
+    "name": "曹植",
+    "dynasty": "三国",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子建"
+    ],
+    "year_birth": 192,
+    "year_death": 232,
+    "summary": "三国时期魏国诗人，建安文学代表人物，代表作《洛神赋》《七步诗》。"
+  },
+  {
+    "name": "刘禅",
+    "dynasty": "蜀汉",
+    "gender": "男",
+    "identity": [
+      "皇帝"
+    ],
+    "titles": [],
+    "aliases": [
+      "字公嗣",
+      "小名阿斗"
+    ],
+    "year_birth": 207,
+    "year_death": 271,
+    "summary": "蜀汉后主，在位41年，以昏庸无能闻名，最终投降魏国。"
+  },
+  {
+    "name": "谢安",
+    "dynasty": "东晋",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "文臣"
+    ],
+    "titles": [],
+    "aliases": [
+      "字安石",
+      "号东山",
+      "谢安石",
+      "谢东山"
+    ],
+    "year_birth": 320,
+    "year_death": 385,
+    "summary": "东晋名相，淝水之战中运筹帷幄，以少胜多，堪称一代风流人物。"
+  },
+  {
+    "name": "王羲之",
+    "dynasty": "东晋",
+    "gender": "男",
+    "identity": [
+      "书法家",
+      "文学家"
+    ],
+    "titles": [
+      "书圣"
+    ],
+    "aliases": [
+      "字逸少",
+      "号澹斋",
+      "王右军"
+    ],
+    "year_birth": 303,
+    "year_death": 361,
+    "summary": "东晋著名书法家，被誉为书圣，代表作《兰亭序》享誉千古。"
+  },
+  {
+    "name": "陶渊明",
+    "dynasty": "东晋",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "文学家",
+      "辞赋家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字元亮",
+      "号五柳先生",
+      "私谥靖节"
+    ],
+    "year_birth": 365,
+    "year_death": 427,
+    "summary": "东晋著名诗人，田园诗派创始人，代表作《桃花源记》，隐居不仕。"
+  },
+  {
+    "name": "祖冲之",
+    "dynasty": "南北朝",
+    "gender": "男",
+    "identity": [
+      "科学家",
+      "数学家",
+      "天文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字文远"
+    ],
+    "year_birth": 429,
+    "year_death": 500,
+    "summary": "南北朝杰出数学家、天文学家，首次将圆周率精确到小数点后第七位。"
+  },
+  {
+    "name": "杨坚",
+    "dynasty": "隋",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": 541,
+    "year_death": 604,
+    "summary": "隋朝开国皇帝，统一全国，实行改革，开创开皇之治。"
+  },
+  {
+    "name": "杨广",
+    "dynasty": "隋",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "隋炀帝"
+    ],
+    "year_birth": 569,
+    "year_death": 618,
+    "summary": "隋朝第二位皇帝，在位期间开凿大运河、创立科举制，但因暴政导致隋朝灭亡。"
+  },
+  {
+    "name": "李渊",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字叔德"
+    ],
+    "year_birth": 566,
+    "year_death": 635,
+    "summary": "唐朝开国皇帝，隋末太原留守，起兵反隋建立唐朝，奠定大唐基业。"
+  },
+  {
+    "name": "李世民",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字世民",
+      "谥号文皇帝",
+      "庙号太宗"
+    ],
+    "year_birth": 598,
+    "year_death": 649,
+    "summary": "唐朝第二位皇帝，开创贞观之治，奠定唐朝盛世基础，杰出的政治家和军事家。"
+  },
+  {
+    "name": "长孙皇后",
+    "dynasty": "唐",
+    "gender": "女",
+    "identity": [
+      "皇后",
+      "政治家"
+    ],
+    "titles": [
+      "文德皇后"
+    ],
+    "aliases": [],
+    "year_birth": 601,
+    "year_death": 636,
+    "summary": "唐太宗李世民的皇后，以贤德著称，辅佐太宗，被誉为一代贤后。"
+  },
+  {
+    "name": "魏征",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家",
+      "思想家"
+    ],
+    "titles": [
+      "凌烟阁二十四功臣"
+    ],
+    "aliases": [
+      "字玄成"
+    ],
+    "year_birth": 580,
+    "year_death": 643,
+    "summary": "唐朝著名宰相，以直言敢谏闻名，辅佐唐太宗开创贞观之治。"
+  },
+  {
+    "name": "房玄龄",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [
+      "凌烟阁二十四功臣"
+    ],
+    "aliases": [
+      "房乔",
+      "房玄龄"
+    ],
+    "year_birth": 579,
+    "year_death": 648,
+    "summary": "唐朝初年名相，协助李世民开创贞观之治，以善谋著称。"
+  },
+  {
+    "name": "李靖",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "凌烟阁二十四功臣"
+    ],
+    "aliases": [
+      "字药师"
+    ],
+    "year_birth": 571,
+    "year_death": 649,
+    "summary": "唐朝著名军事家、将领，灭东突厥、吐谷浑，著兵法，封卫国公。"
+  },
+  {
+    "name": "尉迟敬德",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "凌烟阁二十四功臣"
+    ],
+    "aliases": [
+      "尉迟恭"
+    ],
+    "year_birth": 585,
+    "year_death": 658,
+    "summary": "唐代名将，凌烟阁二十四功臣之一，以勇武著称，多次救李世民于危难，与秦琼并称门神。"
+  },
+  {
+    "name": "秦琼",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "凌烟阁二十四功臣"
+    ],
+    "aliases": [
+      "字叔宝"
+    ],
+    "year_birth": null,
+    "year_death": 638,
+    "summary": "唐初著名将领，凌烟阁二十四功臣之一，勇武过人，助李世民开创贞观之治。"
+  },
+  {
+    "name": "程咬金",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "凌烟阁二十四功臣"
+    ],
+    "aliases": [
+      "字义贞"
+    ],
+    "year_birth": null,
+    "year_death": 665,
+    "summary": "唐朝开国名将，凌烟阁二十四功臣之一，骁勇善战，以板斧闻名后世。"
+  },
+  {
+    "name": "薛仁贵",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "唐朝名将"
+    ],
+    "aliases": [
+      "字仁贵"
+    ],
+    "year_birth": 614,
+    "year_death": 683,
+    "summary": "唐朝初年名将，勇猛善战，三箭定天山，大败九姓铁勒，击溃突厥。"
+  },
+  {
+    "name": "武则天",
+    "dynasty": "唐",
+    "gender": "女",
+    "identity": [
+      "皇帝",
+      "政治家"
+    ],
+    "titles": [
+      "中国唯一正统女皇帝"
+    ],
+    "aliases": [
+      "武曌",
+      "武媚娘",
+      "则天大圣皇帝"
+    ],
+    "year_birth": 624,
+    "year_death": 705,
+    "summary": "唐代女皇，中国历史上唯一被承认的正统女皇帝，建立武周。"
+  },
+  {
+    "name": "狄仁杰",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字怀英"
+    ],
+    "year_birth": 630,
+    "year_death": 700,
+    "summary": "唐代著名宰相，以明察善断、执法公正著称，被誉为“狄青天”。"
+  },
+  {
+    "name": "唐玄宗",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "唐明皇",
+      "李三郎"
+    ],
+    "year_birth": 685,
+    "year_death": 762,
+    "summary": "唐朝第七位皇帝，开创开元盛世，晚年因安史之乱导致国势衰落。"
+  },
+  {
+    "name": "杨玉环",
+    "dynasty": "唐",
+    "gender": "女",
+    "identity": [
+      "贵妃",
+      "音乐家",
+      "舞蹈家"
+    ],
+    "titles": [
+      "四大美女"
+    ],
+    "aliases": [
+      "杨贵妃",
+      "玉奴"
+    ],
+    "year_birth": 719,
+    "year_death": 756,
+    "summary": "杨玉环，唐玄宗宠妃，姿容绝代，精通音律舞蹈，安史之乱中被迫缢死。"
+  },
+  {
+    "name": "安禄山",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [
+      "大燕皇帝"
+    ],
+    "aliases": [
+      "字阿荦山",
+      "轧荦山"
+    ],
+    "year_birth": null,
+    "year_death": -757,
+    "summary": "唐朝安史之乱主要发起者，范阳节度使起兵反唐，后称帝建立大燕政权。"
+  },
+  {
+    "name": "郭子仪",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [
+      "汾阳王",
+      "尚父"
+    ],
+    "aliases": [
+      "字子仪"
+    ],
+    "year_birth": 697,
+    "year_death": 781,
+    "summary": "唐朝著名将领，平定安史之乱，屡建奇功，封汾阳王，被尊为“尚父”。"
+  },
+  {
     "name": "李白",
     "dynasty": "唐",
     "gender": "男",
-    "identity": ["诗人", "文学家"],
-    "titles": ["诗仙"],
-    "aliases": ["字太白", "号青莲居士", "谪仙人"],
+    "identity": [
+      "诗人",
+      "文学家"
+    ],
+    "titles": [
+      "诗仙"
+    ],
+    "aliases": [
+      "字太白",
+      "号青莲居士",
+      "谪仙人"
+    ],
     "year_birth": 701,
     "year_death": 762,
     "summary": "唐代浪漫主义诗人，被后人誉为诗仙，与杜甫并称李杜。"
@@ -14,55 +1885,1688 @@
     "name": "杜甫",
     "dynasty": "唐",
     "gender": "男",
-    "identity": ["诗人", "文学家", "思想家"],
-    "titles": ["诗圣", "诗史"],
-    "aliases": ["字子美", "号少陵野老"],
+    "identity": [
+      "诗人",
+      "文学家",
+      "思想家"
+    ],
+    "titles": [
+      "诗圣",
+      "诗史"
+    ],
+    "aliases": [
+      "字子美",
+      "号少陵野老"
+    ],
     "year_birth": 712,
     "year_death": 770,
     "summary": "唐代现实主义诗人，与李白并称李杜，作品被称为诗史。"
   },
   {
+    "name": "白居易",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "文学家",
+      "文臣"
+    ],
+    "titles": [],
+    "aliases": [
+      "字乐天",
+      "号香山居士",
+      "号醉吟先生"
+    ],
+    "year_birth": 772,
+    "year_death": 846,
+    "summary": "唐代现实主义诗人，新乐府运动倡导者，代表作《长恨歌》《琵琶行》。"
+  },
+  {
+    "name": "王维",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "画家"
+    ],
+    "titles": [
+      "诗佛"
+    ],
+    "aliases": [
+      "字摩诘",
+      "号摩诘居士",
+      "王右丞"
+    ],
+    "year_birth": 701,
+    "year_death": 761,
+    "summary": "唐代著名诗人、画家，山水田园诗派代表，与孟浩然并称“王孟”，有“诗佛”之称。"
+  },
+  {
+    "name": "孟浩然",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "隐士"
+    ],
+    "titles": [],
+    "aliases": [
+      "字浩然",
+      "号孟山人"
+    ],
+    "year_birth": 689,
+    "year_death": 740,
+    "summary": "唐代著名山水田园诗人，与王维并称“王孟”，诗风清淡自然。"
+  },
+  {
+    "name": "王昌龄",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字少伯",
+      "王江宁",
+      "王龙标"
+    ],
+    "year_birth": 698,
+    "year_death": 757,
+    "summary": "唐代著名边塞诗人，以七绝见长，被誉为“七绝圣手”，代表作有《出塞》等。"
+  },
+  {
+    "name": "杜牧",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字牧之",
+      "号樊川居士"
+    ],
+    "year_birth": 803,
+    "year_death": 852,
+    "summary": "唐代著名诗人，与李商隐合称“小李杜”，代表作《阿房宫赋》《泊秦淮》等。"
+  },
+  {
+    "name": "李商隐",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "文学家"
+    ],
+    "titles": [
+      "小李杜"
+    ],
+    "aliases": [
+      "字义山",
+      "号玉溪生",
+      "号樊南生"
+    ],
+    "year_birth": 813,
+    "year_death": 858,
+    "summary": "晚唐杰出诗人，与杜牧合称小李杜，擅长无题诗，风格含蓄深沉，对后世影响深远。"
+  },
+  {
+    "name": "韩愈",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "思想家",
+      "政治家"
+    ],
+    "titles": [
+      "唐宋八大家"
+    ],
+    "aliases": [
+      "字退之",
+      "号昌黎先生"
+    ],
+    "year_birth": 768,
+    "year_death": 824,
+    "summary": "唐代古文运动的倡导者，位列唐宋八大家之首，有“文起八代之衰”之誉。"
+  },
+  {
+    "name": "柳宗元",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "思想家",
+      "政治家",
+      "诗人"
+    ],
+    "titles": [
+      "唐宋八大家"
+    ],
+    "aliases": [
+      "字子厚",
+      "号柳河东"
+    ],
+    "year_birth": 773,
+    "year_death": 819,
+    "summary": "唐代文学家、思想家，唐宋八大家之一，倡导古文运动，代表作《永州八记》。"
+  },
+  {
+    "name": "颜真卿",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "书法家",
+      "政治家"
+    ],
+    "titles": [
+      "楷书四大家"
+    ],
+    "aliases": [
+      "字清臣"
+    ],
+    "year_birth": 709,
+    "year_death": 785,
+    "summary": "唐朝名臣、书法家，以楷书著称，创立“颜体”，与柳公权并称“颜柳”。"
+  },
+  {
+    "name": "玄奘",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "僧人",
+      "翻译家",
+      "旅行家",
+      "思想家"
+    ],
+    "titles": [
+      "法相宗创始人"
+    ],
+    "aliases": [
+      "俗名陈祎",
+      "号大遍觉法师"
+    ],
+    "year_birth": 602,
+    "year_death": 664,
+    "summary": "唐代高僧，西行求法十七载，翻译佛经，开创法相宗，促进中外文化交流。"
+  },
+  {
+    "name": "孙思邈",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "医学家"
+    ],
+    "titles": [
+      "药王"
+    ],
+    "aliases": [
+      "孙真人"
+    ],
+    "year_birth": 541,
+    "year_death": 682,
+    "summary": "唐代著名医药学家，被尊为“药王”，著有《千金要方》和《千金翼方》。"
+  },
+  {
+    "name": "慧能",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "僧人",
+      "思想家"
+    ],
+    "titles": [],
+    "aliases": [
+      "惠能",
+      "禅宗六祖"
+    ],
+    "year_birth": 638,
+    "year_death": 713,
+    "summary": "唐代高僧，禅宗六祖，弘法于曹溪，倡导顿悟，著《六祖坛经》。"
+  },
+  {
+    "name": "黄巢",
+    "dynasty": "唐",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "农民起义领袖"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": 835,
+    "year_death": 884,
+    "summary": "唐末农民起义领袖，领导黄巢起义，攻占长安建立大齐政权。"
+  },
+  {
+    "name": "赵匡胤",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "宋太祖"
+    ],
+    "year_birth": 927,
+    "year_death": 976,
+    "summary": "北宋开国皇帝，通过陈桥兵变夺取政权，结束了五代十国分裂局面。"
+  },
+  {
+    "name": "赵佶",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "画家",
+      "书法家",
+      "词人"
+    ],
+    "titles": [],
+    "aliases": [
+      "宋徽宗"
+    ],
+    "year_birth": 1082,
+    "year_death": 1135,
+    "summary": "北宋第八位皇帝，著名书画家，创瘦金体，但治国无方，导致靖康之变。"
+  },
+  {
+    "name": "赵构",
+    "dynasty": "南宋",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "宋高宗",
+      "字德基"
+    ],
+    "year_birth": 1107,
+    "year_death": 1187,
+    "summary": "南宋开国皇帝，向金称臣，杀害岳飞，重用秦桧，偏安江南。"
+  },
+  {
+    "name": "包拯",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家",
+      "清官"
+    ],
+    "titles": [],
+    "aliases": [
+      "包青天",
+      "包孝肃",
+      "字希仁"
+    ],
+    "year_birth": 999,
+    "year_death": 1062,
+    "summary": "北宋著名清官，以断案如神、铁面无私著称，深受百姓爱戴，被誉为包青天。"
+  },
+  {
+    "name": "欧阳修",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家",
+      "文学家",
+      "史学家",
+      "词人",
+      "诗人"
+    ],
+    "titles": [
+      "唐宋八大家"
+    ],
+    "aliases": [
+      "字永叔",
+      "号醉翁",
+      "晚号六一居士"
+    ],
+    "year_birth": 1007,
+    "year_death": 1072,
+    "summary": "北宋文坛领袖，领导古文运动，修《新唐书》《新五代史》，为唐宋八大家之一。"
+  },
+  {
+    "name": "范仲淹",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家",
+      "文学家",
+      "思想家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字希文",
+      "谥文正"
+    ],
+    "year_birth": 989,
+    "year_death": 1052,
+    "summary": "北宋著名政治家、文学家，主持庆历新政，倡导‘先天下之忧而忧’，著有《岳阳楼记》。"
+  },
+  {
+    "name": "王安石",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "文学家",
+      "思想家",
+      "改革家"
+    ],
+    "titles": [
+      "唐宋八大家"
+    ],
+    "aliases": [
+      "字介甫",
+      "号半山"
+    ],
+    "year_birth": 1021,
+    "year_death": 1086,
+    "summary": "北宋著名政治家、文学家、思想家，主导熙宁变法，是唐宋八大家之一。"
+  },
+  {
+    "name": "司马光",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "史学家",
+      "政治家",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字君实",
+      "号迂夫",
+      "晚号迂叟"
+    ],
+    "year_birth": 1019,
+    "year_death": 1086,
+    "summary": "北宋政治家、史学家，主持编纂编年体通史《资治通鉴》，影响深远。"
+  },
+  {
     "name": "苏轼",
     "dynasty": "宋",
     "gender": "男",
-    "identity": ["文学家", "诗人", "词人", "书法家", "画家", "政治家"],
-    "titles": ["唐宋八大家", "宋四家"],
-    "aliases": ["字子瞻", "号东坡居士"],
+    "identity": [
+      "文学家",
+      "诗人",
+      "词人",
+      "书法家",
+      "画家",
+      "政治家"
+    ],
+    "titles": [
+      "唐宋八大家",
+      "宋四家"
+    ],
+    "aliases": [
+      "字子瞻",
+      "号东坡居士"
+    ],
     "year_birth": 1037,
     "year_death": 1101,
     "summary": "北宋文学家，唐宋八大家之一，豪放派词人代表。"
   },
   {
-    "name": "王阳明",
+    "name": "李清照",
+    "dynasty": "南宋",
+    "gender": "女",
+    "identity": [
+      "词人",
+      "文学家",
+      "诗人"
+    ],
+    "titles": [],
+    "aliases": [
+      "易安居士"
+    ],
+    "year_birth": 1084,
+    "year_death": 1155,
+    "summary": "宋代女词人，婉约词派代表，有“千古第一才女”之称。"
+  },
+  {
+    "name": "陆游",
+    "dynasty": "南宋",
+    "gender": "男",
+    "identity": [
+      "诗人",
+      "词人",
+      "文学家",
+      "史学家"
+    ],
+    "titles": [
+      "中兴四大诗人"
+    ],
+    "aliases": [
+      "字务观",
+      "号放翁"
+    ],
+    "year_birth": 1125,
+    "year_death": 1210,
+    "summary": "南宋爱国诗人，一生力主抗金，诗词作品丰富，气势雄浑。"
+  },
+  {
+    "name": "辛弃疾",
+    "dynasty": "南宋",
+    "gender": "男",
+    "identity": [
+      "词人",
+      "将领"
+    ],
+    "titles": [
+      "辛词代表人物"
+    ],
+    "aliases": [
+      "字幼安",
+      "号稼轩居士"
+    ],
+    "year_birth": 1140,
+    "year_death": 1207,
+    "summary": "南宋豪放派词人，将领，其词慷慨豪迈，充满爱国情怀，与苏轼并称苏辛。"
+  },
+  {
+    "name": "文天祥",
+    "dynasty": "南宋",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "将领",
+      "诗人",
+      "文学家",
+      "政治家",
+      "民族英雄"
+    ],
+    "titles": [
+      "宋末三杰"
+    ],
+    "aliases": [
+      "字宋瑞",
+      "号文山"
+    ],
+    "year_birth": 1236,
+    "year_death": 1283,
+    "summary": "南宋末政治家、文学家，抗元英雄，以《过零丁洋》名句'人生自古谁无死，留取丹心照汗青'传世。"
+  },
+  {
+    "name": "岳飞",
+    "dynasty": "南宋",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字鹏举"
+    ],
+    "year_birth": 1103,
+    "year_death": 1142,
+    "summary": "南宋抗金名将，民族英雄，以精忠报国著称，后被冤杀。"
+  },
+  {
+    "name": "沈括",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "科学家",
+      "政治家",
+      "文学家",
+      "史学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字存中",
+      "号梦溪丈人"
+    ],
+    "year_birth": 1031,
+    "year_death": 1095,
+    "summary": "北宋著名科学家、政治家，著有《梦溪笔谈》，被誉为中国科学史的里程碑人物。"
+  },
+  {
+    "name": "毕昇",
+    "dynasty": "北宋",
+    "gender": "男",
+    "identity": [
+      "发明家",
+      "科学家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "北宋发明家，发明胶泥活字印刷术，推动世界印刷技术发展。"
+  },
+  {
+    "name": "朱熹",
+    "dynasty": "南宋",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "哲学家",
+      "教育家",
+      "诗人",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字元晦",
+      "号晦庵"
+    ],
+    "year_birth": 1130,
+    "year_death": 1200,
+    "summary": "南宋著名理学家，程朱理学集大成者，提出存天理灭人欲，影响后世深远。"
+  },
+  {
+    "name": "铁木真",
+    "dynasty": "元",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [
+      "成吉思汗"
+    ],
+    "aliases": [
+      "孛儿只斤·铁木真",
+      "成吉思汗"
+    ],
+    "year_birth": 1162,
+    "year_death": 1227,
+    "summary": "蒙古帝国建立者，杰出的军事家和政治家，统一蒙古各部，建立横跨欧亚的帝国。"
+  },
+  {
+    "name": "忽必烈",
+    "dynasty": "元",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [
+      "元世祖",
+      "蒙古大汗"
+    ],
+    "aliases": [
+      "薛禅汗",
+      "忽必烈汗"
+    ],
+    "year_birth": 1215,
+    "year_death": 1294,
+    "summary": "元朝开国皇帝，统一中国，建立行省制度，促进民族融合与文化交流。"
+  },
+  {
+    "name": "郭守敬",
+    "dynasty": "元",
+    "gender": "男",
+    "identity": [
+      "科学家",
+      "天文学家",
+      "水利专家",
+      "数学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字若思"
+    ],
+    "year_birth": 1231,
+    "year_death": 1316,
+    "summary": "元代杰出科学家，创制简仪、授时历，主持修建通惠河，在天文、水利、数学等领域成就卓著。"
+  },
+  {
+    "name": "关汉卿",
+    "dynasty": "元",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "戏曲家"
+    ],
+    "titles": [
+      "元曲四大家"
+    ],
+    "aliases": [
+      "号已斋"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "元代杂剧奠基人，代表作《窦娥冤》，被誉为“曲圣”。"
+  },
+  {
+    "name": "赵孟頫",
+    "dynasty": "元",
+    "gender": "男",
+    "identity": [
+      "书法家",
+      "画家",
+      "诗人"
+    ],
+    "titles": [
+      "楷书四大家"
+    ],
+    "aliases": [
+      "字子昂",
+      "号松雪道人",
+      "又号水精宫道人",
+      "鸥波"
+    ],
+    "year_birth": 1254,
+    "year_death": 1322,
+    "summary": "南宋末至元初著名书法家、画家、诗人，倡导复古，对后世影响深远。"
+  },
+  {
+    "name": "朱元璋",
     "dynasty": "明",
     "gender": "男",
-    "identity": ["思想家", "哲学家", "文学家", "军事家", "政治家"],
-    "titles": ["心学集大成者"],
-    "aliases": ["字伯安", "号阳明", "王守仁"],
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [
+      "明太祖"
+    ],
+    "aliases": [
+      "字国瑞",
+      "洪武帝"
+    ],
+    "year_birth": 1328,
+    "year_death": 1398,
+    "summary": "明朝开国皇帝，推翻元朝统治，建立统一政权，在位期间推行一系列改革措施。"
+  },
+  {
+    "name": "朱棣",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "永乐帝"
+    ],
+    "year_birth": 1360,
+    "year_death": 1424,
+    "summary": "明朝第三位皇帝，年号永乐，发动靖难之役夺位，迁都北京，派郑和下西洋，编纂《永乐大典》。"
+  },
+  {
+    "name": "徐达",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字天德"
+    ],
+    "year_birth": 1332,
+    "year_death": 1385,
+    "summary": "明朝开国名将，辅佐朱元璋建立明朝，战功卓著，封魏国公。"
+  },
+  {
+    "name": "刘基",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家",
+      "军事家",
+      "文学家"
+    ],
+    "titles": [
+      "明初开国功臣",
+      "明初诗文三大家"
+    ],
+    "aliases": [
+      "字伯温",
+      "号犁眉"
+    ],
+    "year_birth": 1311,
+    "year_death": 1375,
+    "summary": "明朝开国元勋，精通天文兵法，辅佐朱元璋建立明朝，以神机妙算著称。"
+  },
+  {
+    "name": "郑和",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "航海家",
+      "外交家",
+      "宦官"
+    ],
+    "titles": [],
+    "aliases": [
+      "三宝太监",
+      "原名马和"
+    ],
+    "year_birth": 1371,
+    "year_death": 1433,
+    "summary": "明代著名航海家、宦官，七次下西洋，促进了中外经济文化交流。"
+  },
+  {
+    "name": "朱由检",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "皇帝"
+    ],
+    "titles": [],
+    "aliases": [
+      "崇祯帝"
+    ],
+    "year_birth": 1611,
+    "year_death": 1644,
+    "summary": "明朝末代皇帝，即位后励精图治，然无力挽救危局，李自成破京时自缢身亡。"
+  },
+  {
+    "name": "于谦",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "将领",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字廷益",
+      "号节庵"
+    ],
+    "year_birth": 1398,
+    "year_death": 1457,
+    "summary": "明朝名臣，民族英雄，在土木堡之变中力排众议，成功保卫北京，后被冤杀。"
+  },
+  {
+    "name": "王守仁",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "哲学家",
+      "文学家",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [
+      "心学集大成者"
+    ],
+    "aliases": [
+      "字伯安",
+      "号阳明",
+      "王守仁",
+      "王阳明"
+    ],
     "year_birth": 1472,
     "year_death": 1529,
     "summary": "明代思想家，心学集大成者，提出知行合一。"
   },
   {
-    "name": "武则天",
-    "dynasty": "唐",
-    "gender": "女",
-    "identity": ["皇帝", "政治家"],
-    "titles": ["中国唯一正统女皇帝"],
-    "aliases": ["武曌", "武媚娘", "则天大圣皇帝"],
-    "year_birth": 624,
-    "year_death": 705,
-    "summary": "唐代女皇，中国历史上唯一被承认的正统女皇帝，建立武周。"
+    "name": "严嵩",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字惟中",
+      "号介溪"
+    ],
+    "year_birth": 1480,
+    "year_death": 1567,
+    "summary": "明朝著名权臣，专权二十余年，以贪腐和迫害忠良著称，为嘉靖朝首辅。"
   },
   {
-    "name": "诸葛亮",
-    "dynasty": "三国",
+    "name": "张居正",
+    "dynasty": "明",
     "gender": "男",
-    "identity": ["政治家", "军事家", "文学家", "发明家"],
-    "titles": ["卧龙", "武侯"],
-    "aliases": ["字孔明", "号卧龙"],
-    "year_birth": 181,
-    "year_death": 234,
-    "summary": "三国蜀汉丞相，杰出的政治家军事家，鞠躬尽瘁死而后已。"
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字叔大",
+      "号太岳"
+    ],
+    "year_birth": 1525,
+    "year_death": 1582,
+    "summary": "明朝中后期政治家、改革家，推行万历新政，整顿吏治，改革赋税，强兵固边。"
+  },
+  {
+    "name": "海瑞",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字汝贤",
+      "号刚峰"
+    ],
+    "year_birth": 1514,
+    "year_death": 1587,
+    "summary": "明代著名清官，以直言敢谏、廉洁奉公著称，被誉为“海青天”。"
+  },
+  {
+    "name": "戚继光",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字元敬",
+      "号南塘",
+      "晚号孟诸"
+    ],
+    "year_birth": 1528,
+    "year_death": 1588,
+    "summary": "明朝抗倭名将、民族英雄，创立戚家军，撰写《纪效新书》等兵书，抵御倭寇，保卫海防。"
+  },
+  {
+    "name": "魏忠贤",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "宦官",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": 1627,
+    "summary": "明朝宦官，天启年间权倾朝野，专断国政，迫害东林党人。"
+  },
+  {
+    "name": "袁崇焕",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字元素"
+    ],
+    "year_birth": 1584,
+    "year_death": 1630,
+    "summary": "明末抗清名将，后因崇祯帝中反间计被冤杀。"
+  },
+  {
+    "name": "吴三桂",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字长伯",
+      "号月所"
+    ],
+    "year_birth": 1612,
+    "year_death": 1678,
+    "summary": "明末清初著名将领，引清军入关，后举兵反清，称帝于衡阳，不久病死。"
+  },
+  {
+    "name": "李自成",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "政治家",
+      "皇帝"
+    ],
+    "titles": [
+      "大顺皇帝"
+    ],
+    "aliases": [
+      "闯王"
+    ],
+    "year_birth": 1606,
+    "year_death": 1645,
+    "summary": "明朝末年农民起义领袖，推翻明朝统治，建立大顺政权，但迅速败亡。"
+  },
+  {
+    "name": "张献忠",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "皇帝"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": 1606,
+    "year_death": 1647,
+    "summary": "明末农民起义领袖，大西政权建立者，以残暴著称，对四川造成重大破坏。"
+  },
+  {
+    "name": "唐寅",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "画家",
+      "文学家",
+      "诗人",
+      "书法家"
+    ],
+    "titles": [
+      "吴中四才子",
+      "江南四大才子",
+      "明四家"
+    ],
+    "aliases": [
+      "字伯虎",
+      "号六如居士",
+      "号桃花庵主"
+    ],
+    "year_birth": 1470,
+    "year_death": 1524,
+    "summary": "明代著名画家、文学家，“吴中四才子”之一，绘画与诗文俱佳，其画与沈周、文徵明、仇英并称“明四家”。"
+  },
+  {
+    "name": "李时珍",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "医学家",
+      "科学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字东璧",
+      "号濒湖山人"
+    ],
+    "year_birth": 1518,
+    "year_death": 1593,
+    "summary": "明代著名医学家，著有《本草纲目》，系统总结了中国16世纪以前的药物学成就。"
+  },
+  {
+    "name": "宋应星",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "科学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字长庚"
+    ],
+    "year_birth": 1587,
+    "year_death": 1666,
+    "summary": "明朝科学家，著有《天工开物》，被誉为“中国17世纪的工艺百科全书”。"
+  },
+  {
+    "name": "徐光启",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "科学家",
+      "文臣",
+      "政治家",
+      "数学家",
+      "农学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字子先",
+      "号玄扈"
+    ],
+    "year_birth": 1562,
+    "year_death": 1633,
+    "summary": "明代科学家、政治家，著有《农政全书》，翻译《几何原本》，促进中西文化交流。"
+  },
+  {
+    "name": "吴承恩",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "小说家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字汝忠",
+      "号射阳山人"
+    ],
+    "year_birth": 1500,
+    "year_death": 1582,
+    "summary": "明代小说家，代表作《西游记》是中国古典四大名著之一，想象奇特，影响深远。"
+  },
+  {
+    "name": "罗贯中",
+    "dynasty": "元",
+    "gender": "男",
+    "identity": [
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字贯中",
+      "号湖海散人"
+    ],
+    "year_birth": null,
+    "year_death": null,
+    "summary": "元末明初小说家，代表作《三国演义》，中国古典文学巨匠，章回小说奠基人。"
+  },
+  {
+    "name": "施耐庵",
+    "dynasty": "元",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "小说家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字耐庵"
+    ],
+    "year_birth": 1296,
+    "year_death": 1372,
+    "summary": "元末明初文学家，代表作《水浒传》是中国四大名著之一，对后世文学影响深远。"
+  },
+  {
+    "name": "史可法",
+    "dynasty": "明",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "将领",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字宪之",
+      "又字道邻"
+    ],
+    "year_birth": 1602,
+    "year_death": 1645,
+    "summary": "明末抗清名将，督师扬州，城破殉国，以忠义著称。"
+  },
+  {
+    "name": "努尔哈赤",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [
+      "清太祖",
+      "后金创立者"
+    ],
+    "aliases": [],
+    "year_birth": 1559,
+    "year_death": 1626,
+    "summary": "清朝奠基者，后金创立人，统一女真各部，建立八旗制度，为清入主中原奠定基础。"
+  },
+  {
+    "name": "皇太极",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [
+      "清太宗"
+    ],
+    "aliases": [],
+    "year_birth": 1592,
+    "year_death": 1643,
+    "summary": "清朝开国皇帝，统一女真各部，建立清朝，为清军入关奠定基础。"
+  },
+  {
+    "name": "多尔衮",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [
+      "墨尔根戴青"
+    ],
+    "year_birth": 1612,
+    "year_death": 1650,
+    "summary": "清初皇叔父摄政王，辅佐顺治帝，率清军入关，奠定清朝统一全国基础。"
+  },
+  {
+    "name": "孝庄文皇后",
+    "dynasty": "清",
+    "gender": "女",
+    "identity": [
+      "政治家",
+      "皇后",
+      "太后"
+    ],
+    "titles": [
+      "孝庄文皇后"
+    ],
+    "aliases": [
+      "博尔济吉特·布木布泰"
+    ],
+    "year_birth": 1613,
+    "year_death": 1688,
+    "summary": "清朝开国功臣，辅佐顺治、康熙两代幼帝，稳定清初政局。"
+  },
+  {
+    "name": "康熙帝",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": 1654,
+    "year_death": 1722,
+    "summary": "清朝第四位皇帝，平定三藩、统一台湾，开创康乾盛世，在位期间巩固多民族国家统一。"
+  },
+  {
+    "name": "雍正帝",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "爱新觉罗·胤禛",
+      "清世宗",
+      "雍正"
+    ],
+    "year_birth": 1678,
+    "year_death": 1735,
+    "summary": "清朝第五位皇帝，年号雍正，在位期间推行改革，整顿吏治，巩固皇权，为乾隆盛世奠定基础。"
+  },
+  {
+    "name": "乾隆帝",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家",
+      "书法家",
+      "诗人"
+    ],
+    "titles": [
+      "十全老人"
+    ],
+    "aliases": [
+      "弘历",
+      "乾隆皇帝"
+    ],
+    "year_birth": 1711,
+    "year_death": 1799,
+    "summary": "清朝第六位皇帝，年号乾隆，在位期间清朝达到鼎盛，史称康乾盛世。"
+  },
+  {
+    "name": "鳌拜",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "将领"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": null,
+    "year_death": 1669,
+    "summary": "清朝初期权臣，康熙帝辅政大臣之一，曾掌握大权，后被康熙智擒。"
+  },
+  {
+    "name": "和珅",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字致斋",
+      "号嘉荫堂主人"
+    ],
+    "year_birth": 1750,
+    "year_death": 1799,
+    "summary": "清朝乾隆时期权臣，以善理财、贪腐闻名，曾任军机大臣等要职。"
+  },
+  {
+    "name": "纪昀",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "文学家",
+      "史学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字晓岚",
+      "号石云",
+      "道号观弈道人"
+    ],
+    "year_birth": 1724,
+    "year_death": 1805,
+    "summary": "清代学者，官至礼部尚书，任《四库全书》总纂官，著有《阅微草堂笔记》。"
+  },
+  {
+    "name": "曹雪芹",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "小说家",
+      "诗人"
+    ],
+    "titles": [],
+    "aliases": [
+      "字梦阮",
+      "号雪芹",
+      "号芹圃",
+      "号芹溪"
+    ],
+    "year_birth": 1715,
+    "year_death": 1763,
+    "summary": "清代文学家，以《红楼梦》闻名，被誉为中国古典文学的巅峰之作。"
+  },
+  {
+    "name": "蒲松龄",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "文学家",
+      "小说家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字留仙",
+      "一字剑臣",
+      "号柳泉居士",
+      "世称聊斋先生",
+      "自称异史氏"
+    ],
+    "year_birth": 1640,
+    "year_death": 1715,
+    "summary": "清代文学家，创作文言短篇小说集《聊斋志异》，借鬼狐故事讽刺社会现实。"
+  },
+  {
+    "name": "郑板桥",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "画家",
+      "书法家",
+      "文学家",
+      "诗人"
+    ],
+    "titles": [
+      "扬州八怪"
+    ],
+    "aliases": [
+      "字克柔",
+      "号板桥"
+    ],
+    "year_birth": 1693,
+    "year_death": 1766,
+    "summary": "清代著名画家、书法家，扬州八怪之一，以诗书画‘三绝’闻名。"
+  },
+  {
+    "name": "龚自珍",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "诗人",
+      "思想家",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字璱人",
+      "号定庵"
+    ],
+    "year_birth": 1792,
+    "year_death": 1841,
+    "summary": "清代著名思想家、诗人，主张改革，诗文风格独特。"
+  },
+  {
+    "name": "林则徐",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "文臣",
+      "政治家",
+      "思想家"
+    ],
+    "titles": [
+      "开眼看世界的第一人"
+    ],
+    "aliases": [
+      "字元抚",
+      "号少穆"
+    ],
+    "year_birth": 1785,
+    "year_death": 1850,
+    "summary": "清朝大臣，领导虎门销烟，坚决抵抗英国侵略，主张了解西方，被誉为近代中国开眼看世界的第一人。"
+  },
+  {
+    "name": "光绪帝",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝"
+    ],
+    "titles": [],
+    "aliases": [],
+    "year_birth": 1871,
+    "year_death": 1908,
+    "summary": "清朝第十一位皇帝，在位期间曾推行戊戌变法，失败后被软禁至死。"
+  },
+  {
+    "name": "宣统帝",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝"
+    ],
+    "titles": [],
+    "aliases": [
+      "溥仪",
+      "宣统"
+    ],
+    "year_birth": 1906,
+    "year_death": 1967,
+    "summary": "清朝末代皇帝，1908年至1912年在位，后成为伪满洲国皇帝。"
+  },
+  {
+    "name": "洪秀全",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "皇帝",
+      "政治家",
+      "军事家",
+      "宗教领袖"
+    ],
+    "titles": [
+      "太平天国天王"
+    ],
+    "aliases": [],
+    "year_birth": 1814,
+    "year_death": 1864,
+    "summary": "太平天国创始人，自称天王，领导反清运动，定都天京，颁布《天朝田亩制度》。"
+  },
+  {
+    "name": "石达开",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "军事家"
+    ],
+    "titles": [
+      "太平天国翼王"
+    ],
+    "aliases": [
+      "字子谦"
+    ],
+    "year_birth": 1831,
+    "year_death": 1863,
+    "summary": "太平天国名将，封翼王，能征善战，在战役中屡建奇功，最终兵败被俘就义。"
+  },
+  {
+    "name": "曾国藩",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "文学家",
+      "思想家"
+    ],
+    "titles": [
+      "中兴四大名臣",
+      "湘军创立者"
+    ],
+    "aliases": [
+      "字涤生",
+      "号涤生"
+    ],
+    "year_birth": 1811,
+    "year_death": 1872,
+    "summary": "晚清重臣，湘军创立者，洋务运动发起人之一，平定太平天国，推动近代化改革。"
+  },
+  {
+    "name": "李鸿章",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "军事家",
+      "外交家",
+      "文臣"
+    ],
+    "titles": [
+      "洋务运动领袖",
+      "淮军创始人"
+    ],
+    "aliases": [
+      "字渐甫",
+      "号少荃"
+    ],
+    "year_birth": 1823,
+    "year_death": 1901,
+    "summary": "晚清重臣，洋务运动核心人物，淮军创立者，主持外交并签订多项条约。"
+  },
+  {
+    "name": "左宗棠",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "将领",
+      "政治家",
+      "军事家",
+      "洋务派代表人物"
+    ],
+    "titles": [
+      "晚清四大中兴名臣"
+    ],
+    "aliases": [
+      "字季高",
+      "号湘上农人"
+    ],
+    "year_birth": 1812,
+    "year_death": 1885,
+    "summary": "晚清重臣，湘军名将，收复新疆，推动洋务运动，官至东阁大学士、军机大臣。"
+  },
+  {
+    "name": "张之洞",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "文臣",
+      "思想家",
+      "军事家",
+      "教育家"
+    ],
+    "titles": [
+      "晚清四大名臣"
+    ],
+    "aliases": [
+      "字孝达",
+      "号香涛",
+      "号抱冰"
+    ],
+    "year_birth": 1837,
+    "year_death": 1909,
+    "summary": "晚清洋务派代表人物，推动工业与教育现代化，创办汉阳铁厂等实业。"
+  },
+  {
+    "name": "邓世昌",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "将领"
+    ],
+    "titles": [],
+    "aliases": [
+      "字正卿"
+    ],
+    "year_birth": 1849,
+    "year_death": 1894,
+    "summary": "清末海军将领，在甲午海战中英勇作战，最终壮烈殉国。"
+  },
+  {
+    "name": "康有为",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "政治家",
+      "变法领袖"
+    ],
+    "titles": [],
+    "aliases": [
+      "康南海",
+      "字广厦",
+      "号长素"
+    ],
+    "year_birth": 1858,
+    "year_death": 1927,
+    "summary": "清末维新派领袖，主张君主立宪，发动戊戌变法，对中国近代思想启蒙影响深远。"
+  },
+  {
+    "name": "梁启超",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "思想家",
+      "文学家",
+      "史学家",
+      "教育家"
+    ],
+    "titles": [],
+    "aliases": [
+      "字卓如",
+      "号任公",
+      "号饮冰室主人"
+    ],
+    "year_birth": 1873,
+    "year_death": 1929,
+    "summary": "中国近代维新派领袖，倡导变法，推动思想启蒙，成就斐然的学术大家。"
+  },
+  {
+    "name": "谭嗣同",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "政治家",
+      "思想家"
+    ],
+    "titles": [
+      "戊戌六君子"
+    ],
+    "aliases": [
+      "字复生",
+      "号壮飞"
+    ],
+    "year_birth": 1865,
+    "year_death": 1898,
+    "summary": "清末维新派政治家、思想家，戊戌六君子之一，为变法图强英勇就义。"
+  },
+  {
+    "name": "严复",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "思想家",
+      "翻译家",
+      "教育家",
+      "文学家"
+    ],
+    "titles": [],
+    "aliases": [
+      "严几道",
+      "天演子"
+    ],
+    "year_birth": 1854,
+    "year_death": 1921,
+    "summary": "中国近代启蒙思想家、翻译家，以翻译《天演论》闻名，推动维新变法与思想解放。"
+  },
+  {
+    "name": "詹天佑",
+    "dynasty": "清",
+    "gender": "男",
+    "identity": [
+      "科学家",
+      "工程师"
+    ],
+    "titles": [],
+    "aliases": [
+      "字眷诚",
+      "号达潮"
+    ],
+    "year_birth": 1861,
+    "year_death": 1919,
+    "summary": "中国首位铁路总工程师，主持修建京张铁路，被誉为中国铁路之父。"
+  },
+  {
+    "name": "秋瑾",
+    "dynasty": "清",
+    "gender": "女",
+    "identity": [
+      "政治家",
+      "思想家",
+      "诗人"
+    ],
+    "titles": [],
+    "aliases": [
+      "鉴湖女侠",
+      "竞雄"
+    ],
+    "year_birth": 1875,
+    "year_death": 1907,
+    "summary": "近代民主革命志士，女权运动先驱，倡导男女平等，为革命赴死就义。"
   }
 ]

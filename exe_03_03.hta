@@ -750,9 +750,9 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">API Key <span class="key-builtin-tag" id="keyBuiltinTag">(已内置)</span></label>
+                <label class="form-label">API Key <span class="key-builtin-tag" id="keyBuiltinTag">(需输入)</span></label>
                 <input type="password" class="form-control" id="apiKeyInput" value="">
-                <div class="hint-text">默认已内置演示凭证（加密存储），亦可输入您自己的Key。</div>
+                <div class="hint-text">不提供内置凭证，请输入您自己的 Key。</div>
             </div>
 
             <div class="form-group">
@@ -773,26 +773,6 @@
     </div>
 
     <script language="javascript">
-        // ===== XOR Key Decryption =====
-        var _EK = "7e440615437b5112175d1448640313430d0c57540050744d0710422c5d104c0b5c3a251645011a24754054463d45032034";
-        var _XK = "GuessHistoryPerson2026";
-
-        function _dk(hex, xk) {
-            var r = "";
-            for (var i = 0; i < hex.length / 2; i++) {
-                var b = parseInt(hex.substr(i * 2, 2), 16);
-                var x = xk.charCodeAt(i % xk.length);
-                r = r + String.fromCharCode(b ^ x);
-            }
-            return r;
-        }
-
-        var _cachedKey = "";
-        function getDefaultKey() {
-            if (!_cachedKey) { _cachedKey = _dk(_EK, _XK); }
-            return _cachedKey;
-        }
-
         // ===== Get HTA directory =====
         function getAppDir() {
             try {
@@ -809,11 +789,11 @@
 
         // ===== Provider Presets =====
         var PROVIDERS = {
-            "zhipu": { url: "https://open.bigmodel.cn/api/paas/v4/chat/completions", model: "glm-4.5-air", builtin: true },
-            "deepseek": { url: "https://api.deepseek.com/v1/chat/completions", model: "deepseek-chat", builtin: false },
-            "openai": { url: "https://api.openai.com/v1/chat/completions", model: "gpt-4o-mini", builtin: false },
-            "xai": { url: "https://api.x.ai/v1/chat/completions", model: "grok-2", builtin: false },
-            "custom": { url: "", model: "", builtin: false }
+            "zhipu": { url: "https://open.bigmodel.cn/api/paas/v4/chat/completions", model: "glm-4.5-air" },
+            "deepseek": { url: "https://api.deepseek.com/v1/chat/completions", model: "deepseek-chat" },
+            "openai": { url: "https://api.openai.com/v1/chat/completions", model: "gpt-4o-mini" },
+            "xai": { url: "https://api.x.ai/v1/chat/completions", model: "grok-2" },
+            "custom": { url: "", model: "" }
         };
 
         var currentScript = "";
@@ -827,14 +807,8 @@
 
             var keyInput = document.getElementById("apiKeyInput");
             var tag = document.getElementById("keyBuiltinTag");
-            if (p.builtin) {
-                keyInput.value = "";
-                tag.innerText = "(已内置)";
-                tag.style.display = "inline";
-            } else {
-                keyInput.value = "";
-                tag.style.display = "none";
-            }
+            keyInput.value = "";
+            tag.style.display = "none";
         }
 
         function openApiModal(title, script) {
@@ -862,12 +836,7 @@
             var userKey = document.getElementById("apiKeyInput").value.replace(/\s/g, "");
             var p = PROVIDERS[provider];
 
-            var finalKey = "";
-            if (userKey !== "") {
-                finalKey = userKey;
-            } else if (p.builtin) {
-                finalKey = getDefaultKey();
-            }
+            var finalKey = userKey;
 
             if (!finalKey) {
                 alert("请输入 API Key");

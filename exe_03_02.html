@@ -669,10 +669,10 @@
             <div class="form-group">
                 <label class="form-label">
                     API Key
-                    <span id="keyBuiltinTag" style="color: #4ade80; font-size: 12px; margin-left: 8px;">(已内置)</span>
+                    <span id="keyBuiltinTag" style="color: #4ade80; font-size: 12px; margin-left: 8px;">(需输入)</span>
                 </label>
-                <input type="password" class="form-control" id="apiKeyInput" placeholder="使用内置Key或手动输入覆盖">
-                <div class="hint-text">默认已内置演示凭证（加密存储），亦可输入您自己的Key。</div>
+                <input type="password" class="form-control" id="apiKeyInput" placeholder="请输入对应的 API Key">
+                <div class="hint-text">不提供内置凭证，请输入您自己的 Key。</div>
             </div>
 
             <div class="form-group">
@@ -704,29 +704,12 @@
         const savedTheme = localStorage.getItem('guess-history-theme') || 'dark';
         setTheme(savedTheme);
 
-        const _EK = "7e440615437b5112175d1448640313430d0c57540050744d0710422c5d104c0b5c3a251645011a24754054463d45032034";
-        const _XK = "GuessHistoryPerson2026";
-        let _cachedKey = "";
-
-        function getDefaultKey() {
-            if (!_cachedKey) {
-                let r = "";
-                for (let i = 0; i < _EK.length / 2; i++) {
-                    let b = parseInt(_EK.substr(i * 2, 2), 16);
-                    let x = _XK.charCodeAt(i % _XK.length);
-                    r += String.fromCharCode(b ^ x);
-                }
-                _cachedKey = r;
-            }
-            return _cachedKey;
-        }
-
         const PROVIDERS = {
-            "zhipu": { url: "https://open.bigmodel.cn/api/paas/v4/chat/completions", model: "glm-4.5-air", builtin: true },
-            "deepseek": { url: "https://api.deepseek.com/v1/chat/completions", model: "deepseek-chat", builtin: false },
-            "openai": { url: "https://api.openai.com/v1/chat/completions", model: "gpt-4o-mini", builtin: false },
-            "xai": { url: "https://api.x.ai/v1/chat/completions", model: "grok-2", builtin: false },
-            "custom": { url: "", model: "", builtin: false }
+            "zhipu": { url: "https://open.bigmodel.cn/api/paas/v4/chat/completions", model: "glm-4.5-air" },
+            "deepseek": { url: "https://api.deepseek.com/v1/chat/completions", model: "deepseek-chat" },
+            "openai": { url: "https://api.openai.com/v1/chat/completions", model: "gpt-4o-mini" },
+            "xai": { url: "https://api.x.ai/v1/chat/completions", model: "grok-2" },
+            "custom": { url: "", model: "" }
         };
 
         let currentScript = "";
@@ -740,16 +723,9 @@
             
             const keyInput = document.getElementById('apiKeyInput');
             const tag = document.getElementById('keyBuiltinTag');
-            
-            if (p.builtin) {
-                keyInput.value = "";
-                keyInput.placeholder = "使用内置Key或手动输入覆盖";
-                tag.style.display = "inline";
-            } else {
-                keyInput.value = "";
-                keyInput.placeholder = "请输入对应的 API Key";
-                tag.style.display = "none";
-            }
+            keyInput.value = "";
+            keyInput.placeholder = "请输入对应的 API Key";
+            tag.style.display = "none";
         }
 
         function openApiModal(title, scriptName) {
@@ -778,7 +754,7 @@
             const userKey = document.getElementById('apiKeyInput').value.trim();
             const p = PROVIDERS[provider];
             
-            let finalKey = userKey || (p.builtin ? getDefaultKey() : "");
+            let finalKey = userKey;
             
             if (!finalKey) {
                 showToast("⚠️ 启卷失败：缺少 API Key 凭证");

@@ -24,13 +24,13 @@ DEFAULT_MODEL = os.getenv("LLM_MODEL", "glm-4.5-air")
 
 
 def resolve_default_api_key(st_secrets=None) -> str:
-    """安全地解析默认 API Key。
+    """安全地解析默认 API Key，绝不使用硬编码明文。
 
     Args:
         st_secrets: 可选的 streamlit secrets 对象（st.secrets）。
 
     Returns:
-        API Key 字符串；未找到返回空字符串。
+        API Key 字符串；未找到返回空字符串（此时 app 层会提示用户手动输入）。
     """
     if st_secrets is not None:
         try:

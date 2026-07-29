@@ -53,7 +53,7 @@ LLM_PROVIDER_REGISTRY = {
 # 🔧 默认配置（无 URL 参数时使用）
 # =========================
 DEFAULT_PROVIDER = "zhipu"
-DEFAULT_API_KEY = "2decccf007f4414b8c71cda0b8e3cf26.TeiHdRMi4Pxs1Fx3"
+DEFAULT_API_KEY = ""
 DEFAULT_MODEL = "glm-4.5-air"
 DEFAULT_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
 

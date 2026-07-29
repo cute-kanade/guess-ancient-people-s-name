@@ -50,7 +50,7 @@ from game_state import (
 # =========================
 
 # 默认 LLM API（智谱AI GLM-4.5-Air）
-DEFAULT_API_KEY = "91cf038ac2f14fa0bbed2f38bc1d4c8d.Cus7ruJGpfpz0fSG"
+DEFAULT_API_KEY = ""
 DEFAULT_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions"
 DEFAULT_MODEL = "glm-4.5-air"
 

@@ -1045,52 +1045,27 @@
     </div>
 
     <script>
-        // ===== XOR Key Decryption =====
-        var _EK = "7e440615437b5112175d1448640313430d0c57540050744d0710422c5d104c0b5c3a251645011a24754054463d45032034";
-        var _XK = "GuessHistoryPerson2026";
-
-        function _dk(hex, xk) {
-            var r = "";
-            for (var i = 0; i < hex.length / 2; i++) {
-                var b = parseInt(hex.substr(i * 2, 2), 16);
-                var x = xk.charCodeAt(i % xk.length);
-                r += String.fromCharCode(b ^ x);
-            }
-            return r;
-        }
-
-        var _cachedKey = "";
-        function getDefaultKey() {
-            if (!_cachedKey) _cachedKey = _dk(_EK, _XK);
-            return _cachedKey;
-        }
-
         // ===== Provider Presets =====
         var PROVIDERS = {
             "zhipu": {
                 url: "https://open.bigmodel.cn/api/paas/v4/chat/completions",
-                model: "glm-4.5-air",
-                useBuiltinKey: true
+                model: "glm-4.5-air"
             },
             "deepseek": {
                 url: "https://api.deepseek.com/v1/chat/completions",
-                model: "deepseek-chat",
-                useBuiltinKey: false
+                model: "deepseek-chat"
             },
             "openai": {
                 url: "https://api.openai.com/v1/chat/completions",
-                model: "gpt-4o-mini",
-                useBuiltinKey: false
+                model: "gpt-4o-mini"
             },
             "xai": {
                 url: "https://api.x.ai/v1/chat/completions",
-                model: "grok-2",
-                useBuiltinKey: false
+                model: "grok-2"
             },
             "custom": {
                 url: "",
-                model: "",
-                useBuiltinKey: false
+                model: ""
             }
         };
 
@@ -1105,16 +1080,9 @@
             document.getElementById("modelInput").value = p.model;
 
             var tag = document.getElementById("keyStatusTag");
-            if (p.useBuiltinKey) {
-                document.getElementById("apiKeyInput").value = "";
-                document.getElementById("apiKeyInput").placeholder = "使用内置Key或手动输入";
-                tag.innerText = "已内置";
-                tag.style.display = "inline-block";
-            } else {
-                document.getElementById("apiKeyInput").value = "";
-                document.getElementById("apiKeyInput").placeholder = "请输入 API Key";
-                tag.style.display = "none";
-            }
+            document.getElementById("apiKeyInput").value = "";
+            document.getElementById("apiKeyInput").placeholder = "请输入 API Key";
+            tag.style.display = "none";
         }
 
         // ===== Open Modal =====
@@ -1148,12 +1116,7 @@
             var provider = document.getElementById("providerSelect").value;
             var p = PROVIDERS[provider];
 
-            var finalKey = "";
-            if (userKey && userKey.trim() !== "") {
-                finalKey = userKey;
-            } else if (p.useBuiltinKey) {
-                finalKey = getDefaultKey();
-            }
+            var finalKey = userKey;
 
             if (!finalKey || finalKey.trim() === "") {
                 showToast("请输入 API Key", true);

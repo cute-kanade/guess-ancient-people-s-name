@@ -21,13 +21,16 @@ from typing import Optional
 
 from prompts import build_batch_recheck_prompt
 from game_state import collect_fact_qa_pairs
+from config import resolve_default_api_key
 
 
 # =========================
-# ⚙️ 默认配置（可被 config.py 覆盖）
+# ⚙️ 默认配置（从 config.py 统一解析，不再硬编码）
 # =========================
 
-DEFAULT_API_KEY = "2decccf007f4414b8c71cda0b8e3cf26.TeiHdRMi4Pxs1Fx3"
+# 密钥不再以明文形式存在于源码中；统一通过 config.resolve_default_api_key
+# 从 Streamlit secrets 或环境变量（LLM_API_KEY / ZHIPU_API_KEY）解析。
+DEFAULT_API_KEY: str = resolve_default_api_key()
 DEFAULT_API_URL = os.getenv("LLM_API_URL", "https://open.bigmodel.cn/api/paas/v4/chat/completions")
 DEFAULT_MODEL = os.getenv("LLM_MODEL", "glm-4.5-air")
 
