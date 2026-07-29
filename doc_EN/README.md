@@ -2,7 +2,7 @@
 
 The project is redesigning its architecture as V5.
 
-1. [ARCHITECTURE.md](ARCHITECTURE.md): V5 v1.1 robustness-first authority, semantic/data contracts, state machine, configuration boundaries, milestones, and release gates.
+1. [ARCHITECTURE.md](ARCHITECTURE.md): V5 v1.2 robustness-first authority, semantic/data contracts, state machine, configuration boundaries, staged development plan, expected effects, and release gates.
 2. [ARCHITECTURE_V4_DEPRECATED.md](ARCHITECTURE_V4_DEPRECATED.md): abandoned V4 design and execution history, retained for traceability only.
 3. [Chinese documentation index](../doc_CN/README.md): repository review and historical documentation in Chinese.
 

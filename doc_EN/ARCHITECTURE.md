@@ -1,6 +1,6 @@
 # V5 Robustness-First Architecture and Development Plan
 
-> Document version: v1.1
+> Document version: v1.2
 > Target product version: V5  
 > Status: architecture blueprint awaiting sign-off; implementation has not started  
 > Date: 2026-07-29  
@@ -753,3 +753,54 @@ M0 cannot be marked complete with a discussion note alone. These reviewable arti
 6. `acceptance-plan`: command, sample, owner, and evidence path for every Section 16 gate.
 
 Until these deliverables exist, M0 is not complete and M1 cannot start, even if legacy tests pass.
+
+## 28. V5 Development Plan at a Glance
+
+V5 proceeds in this order: contracts first, deterministic core first, external capability last, and a release-evidence loop. A stage may prepare inputs early, but it cannot advance until its exit conditions pass.
+
+| Stage | Core work | Required deliverables | Prerequisite | Exit condition | Expected effect |
+| --- | --- | --- | --- | --- | --- |
+| M0 Freeze and baseline | Freeze intents, gold set, capability matrix, threat model, and ADRs | Six M0 deliverables and sign-off record | Architecture approval | Every capability is classified as local, clarification, unsupported, or external | The team stops extending behavior by guesswork; simple-question boundaries are fixed |
+| M1 Semantic core | Normalization, intent, frames, lexicon, and clarification | Semantic contracts, failing tests, gold-set report | M0 complete | Supported inputs meet gates and parse-failure network calls equal 0 | “Before Tang” paraphrases enter one stable semantic frame |
+| M2 Fact ontology and data | Predicates, temporal ontology, sources, V4 candidate migration, and review | V5 schemas, normative catalog, quarantine report | M1 frames stable | Schemas, sources, and pack references are valid | Missing fields, temporal boundaries, and AI candidates cannot create false certainty |
+| M3 Deterministic game engine | Resolvers, event sessions, hints, guesses, and replay | Application contracts, state machine, property tests | M2 has normative data | Main flow works without a provider; replay and isolation pass | The game remains complete with no network, key, or healthy provider |
+| M4 Optional external knowledge | Explicit escalation, provider adapter, evidence verification, budgets, and breaker | External port, fault-injection report, security review | M3 local result stable | Only confirmed `external_candidate` turns can reach a provider | External knowledge is a controlled enhancement, never a parser escape path |
+| M5 Player interface | Capability disclosure, clarification controls, recoverable errors, and history isolation | UI state map and browser smoke report | M3 complete; M4 optional | Players see only safe localized outcomes and can clarify without retyping | Players can distinguish misunderstanding, missing facts, unsupported capability, and service failure |
+| M6 Launcher and packaging | Static imports, data manifest, loopback security, and process cleanup | Clean-environment EXE, artifact manifest, no-Python report | M5 main flow stable | Source and EXE behavior match; all three packs start without import errors | Eliminates `ModuleNotFoundError` and “source works, EXE fails” regressions |
+| M7 Release acceptance | Full gates, security, docs, and independent acceptance | Immutable release manifest and signed RC | M0–M6 pass | Every Section 16 metric has non-empty evidence | The release decision is reproducible, accountable, and stage-localized when it fails |
+
+Fixed dependency chain:
+
+```text
+M0 → M1 → M2 → M3 → M4 → M5 → M6 → M7
+```
+
+M4 is optional enhancement and cannot change the M3 local contract. M5 may finish the local-mode UI while M4 is disabled. M6 packages only the main flow already proven by M3 and M5.
+
+## 29. Expected Effects and Quantitative Targets
+
+These are product effects relative to V4, not marketing claims. Each must have evidence under `quality/v5`.
+
+| Quality dimension | V4 failure exposed | V5 target | Verification |
+| --- | --- | --- | --- |
+| Simple-question stability | Simple questions could fall into provider errors | 100% definitive local answers for locally decidable facts | Fact gold set with no provider |
+| Implicit networking | Parse misses could trigger an LLM | 0 implicit network calls for `UNPARSED/AMBIGUOUS/UNSUPPORTED` | Network-stub call counter |
+| Offline playability | Degradation was incomplete | Start, turns, hints, win, surrender, and replay 100% available | Offline/no-key fault injection |
+| Semantic consistency | Conversational and comparison coverage was weak | 0% paraphrase inconsistency; ≥99.5% supported-intent parse rate | Dual-reviewed gold set and metamorphic tests |
+| Uncertainty expression | Unknown, conflict, and negation were easy to conflate | UNKNOWN never becomes NO; definitive answers have evidence | Fact-adjudication unit tests |
+| Session correctness | Reruns could duplicate turns or leak context | Idempotent retries do not decrement or call twice; cross-session leakage 0 | Sequence/replay/isolation properties |
+| Player comprehension | English provider errors appeared directly | No stack, response body, or provider text in player UI | UI snapshots with injected errors |
+| Packaging reliability | Source passed while EXE missed modules | Three packs start and complete the main flow 100% on clean Windows | PyInstaller graph and no-Python machine |
+| Data trust | AI overlays could be treated as facts | Runtime loads `REVIEWED/APPROVED` only by default | Schema validation and migration quarantine report |
+
+## 30. Non-goals, Pause, and Rollback Rules
+
+V5.0 does not promise:
+
+- understanding every open-ended chat or historical question;
+- allowing an LLM to decide answers, mutate sessions, or raise fact confidence;
+- importing every V4 person and overlay without review;
+- retaining two business-logic implementations merely for V4 compatibility;
+- release based on “it feels good” without a gold set, evidence, or reproducible report.
+
+When a stage gate fails, freeze that stage version; preserve failing inputs, traces, and diffs; quarantine invalid data or external results; fix and rerun that stage’s gates before advancing. Never lower thresholds, delete failures, or bypass a V5 contract to claim progress.

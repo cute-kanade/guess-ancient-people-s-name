@@ -6,7 +6,7 @@
 
 ## 建议阅读顺序
 
-1. [ARCHITECTURE.md](ARCHITECTURE.md)：V5 v1.1 鲁棒性优先权威架构、语义与数据合同、状态机、配置边界、里程碑及发布门禁。
+1. [ARCHITECTURE.md](ARCHITECTURE.md)：V5 v1.2 鲁棒性优先权威架构、语义与数据合同、状态机、配置边界、分阶段开发计划、预期效果及发布门禁。
 2. [ARCHITECTURE_V4_DEPRECATED.md](ARCHITECTURE_V4_DEPRECATED.md)：已废弃 V4 的历史设计与执行记录，仅用于追溯。
 3. [01_项目总览.md](01_项目总览.md)：项目目标、当前功能、技术栈和总体结论。
 4. [02_架构与运行流程.md](02_架构与运行流程.md)：历史版本从启动到问答、重答和打包的链路。
