@@ -1,6 +1,6 @@
 # V5 Robustness-First Architecture and Development Plan
 
-> Document version: v1.0  
+> Document version: v1.1
 > Target product version: V5  
 > Status: architecture blueprint awaiting sign-off; implementation has not started  
 > Date: 2026-07-29  
@@ -643,7 +643,7 @@ UI or EXE work cannot precede the semantic core. Stop advancement when any of th
 
 ## 21. Open Questions
 
-These do not block starting V5-M0, but must be signed before M0 closes:
+These do not block starting V5-M0, but must be signed before V5-M0 closes:
 
 1. the initial V5 predicate list;
 2. the historical definition and source policy for “primary active period”;
@@ -654,3 +654,102 @@ These do not block starting V5-M0, but must be signed before M0 closes:
 7. whether V5.0 is Chinese-only (recommended: `zh-CN`).
 
 No `src/guess_history_v5` implementation is created and V5-M1 does not start until this architecture is approved.
+
+## 22. Executable Robustness Matrix
+
+Every turn follows this application contract. Tests and UI code must not reinterpret the result categories.
+
+| Input/runtime condition | Parse result | Network allowed | Consumes a valid question | Player-visible result |
+| --- | --- | --- | --- | --- |
+| Locally decidable fact question | `PARSED` + `answer` | No | Yes | Yes/No/Probably |
+| More than one reasonable meaning | `AMBIGUOUS` | No | No | Clarification choices |
+| Meaning understood but capability unsupported | `UNSUPPORTED` | No | No | Capability guidance |
+| No reliable semantic frame | `UNPARSED` | No | No | Rephrase examples |
+| Local fact missing or conflicting | `fact_unknown` | No | Yes, only when parsed | Insufficient facts |
+| Explicitly allowed external candidate | `external_candidate` | Only after user confirmation | Count only after external success | Evidence-bound result or recoverable failure |
+| Provider timeout, refusal, or invalid response | External error | The current call is terminated | No | Localized recoverable message |
+| Corrupt normative data pack | Game is not created | No | N/A | Block start with repair guidance |
+
+Only `TurnCommitPolicy` decides whether a valid question is consumed. The UI must never increment counters from message text.
+
+## 23. Session State Machine and Idempotency
+
+### 23.1 States
+
+```text
+CREATED → PLAYING → WAITING_CLARIFICATION → PLAYING
+                    ├→ WON → CLOSED
+                    ├→ SURRENDERED → CLOSED
+                    └→ CLOSED
+```
+
+- `WAITING_CLARIFICATION` accepts only a clarification choice or cancel; it cannot accept a new fact turn.
+- `WON`, `SURRENDERED`, and `CLOSED` are terminal; every write returns `SESSION_CLOSED`.
+- Every state change is produced by an event with a monotonic `sequence`.
+
+### 23.2 Atomic turn
+
+`handle_turn` completes this transaction:
+
+```text
+read session version
+  → normalize and parse
+  → decide locally or build clarification
+  → compute Player DTO
+  → let TurnCommitPolicy decide whether to append an event
+```
+
+State is committed only at the final step. External failure, validation failure, and duplicate submission never append an `ANSWERED` event.
+
+The idempotency key is `(session_id, expected_sequence, normalized_input_hash)`. A retry with the same key returns the first result and must not redraw a target, decrement a question, or invoke an external provider twice.
+
+## 24. Configuration and Network-Safety Contract
+
+V5 reads only these startup-validated settings; unlisted variables cannot change business behavior:
+
+| Setting | Default | Constraint |
+| --- | --- | --- |
+| `V5_EXTERNAL_ENABLED` | `false` | Only explicit `true` permits escalation |
+| `V5_PROVIDER_URL` | empty | HTTPS only; loopback is allowed only in a development build |
+| `V5_REQUEST_TIMEOUT_MS` | `8000` | Range 500–30000 |
+| `V5_SESSION_EXTERNAL_BUDGET` | `0` | Non-negative integer, per session |
+| `V5_DATA_DIR` | packaged `data/v5` | Must contain a validated manifest |
+| `V5_LOG_LEVEL` | `INFO` | Production must not log raw text at DEBUG |
+
+Startup performs schema validation, data-pack hash validation, provider-URL validation, and secret-presence validation. A configuration failure starts local mode with external enhancement unavailable; only corrupt normative data blocks game creation.
+
+Network capability exists only in `adapters/llm`. Static checks must prove that `semantic`, `domain`, `application`, and `memory_sessions` have no socket, HTTP-client, or model-SDK dependency.
+
+## 25. Evidence, Conflicts, and Answer Adjudication
+
+Fact adjudication is ordered:
+
+1. validate value type and temporal precision against `PredicateSchema`;
+2. filter by current pack, person, and validity interval;
+3. aggregate sources and detect conflicts for the same predicate;
+4. emit a definitive answer only when policy requirements are met; otherwise return `fact_unknown` or `probably_*`;
+5. write `reason_code`, `fact_refs`, and `source_refs` to the internal trace while exposing only safe copy to players.
+
+A definitive Yes/No requires at least one `APPROVED` source, no unresolved conflict, a matching value type, and a computable temporal relation. `PROBABLE`, `DISPUTED`, interval overlap, or missing sources must never be collapsed into a definitive No.
+
+## 26. Change Governance and Traceability
+
+- The lexicon, Predicate Schema, temporal ontology, and each data pack have independent versions recorded in `DecisionTrace` and the release manifest.
+- A semantic change first adds reviewed gold-set cases, then an ADR amendment; changing implementation without changing the contract is prohibited.
+- Fact changes produce field-level, source-level, and pack-membership snapshot diffs.
+- Migrations, lexicon changes, and schema changes must be replayable, reversible, or placed in an explicit quarantine directory.
+- Chinese and English architecture section, gate, and milestone counts must be checked for parity in CI.
+- Every release candidate has an immutable `quality/v5/release/manifest.json` recording commit, data hashes, test reports, and reviewers.
+
+## 27. V5-M0 Required Deliverables
+
+M0 cannot be marked complete with a discussion note alone. These reviewable artifacts must exist:
+
+1. `requirements-matrix`: intent, frame, capability, failure result, and network permission for every supported category;
+2. `language-gold-set`: dual review, expected parse result, and version for every input;
+3. `predicate-schema` and `period-ontology`: machine-checkable fields, enums, and boundary rules;
+4. `threat-model`: prompt injection, target leakage, secrets, loopback HTTP, and dependency risks;
+5. `migration-report` template: field-level differences and quarantine reasons for V4 candidates;
+6. `acceptance-plan`: command, sample, owner, and evidence path for every Section 16 gate.
+
+Until these deliverables exist, M0 is not complete and M1 cannot start, even if legacy tests pass.

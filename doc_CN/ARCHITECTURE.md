@@ -1,6 +1,6 @@
 # V5 鲁棒性优先架构与开发计划
 
-> 文档版本：v1.0  
+> 文档版本：v1.1
 > 目标产品版本：V5  
 > 状态：架构蓝图待签署，尚未进入实现  
 > 日期：2026-07-29  
@@ -689,3 +689,102 @@ V5 发布候选必须同时满足：
 7. 首发是否只支持中文；建议 V5.0 仅支持 `zh-CN`。
 
 在上述架构获得确认前，不创建 `src/guess_history_v5` 实现代码，不启动 V5-M1。
+
+## 22. 可执行鲁棒性矩阵
+
+所有回合必须按下表处理。矩阵是应用层合同，测试和 UI 不得自行改变结果含义。
+
+| 输入/运行情况 | 解析结果 | 是否允许联网 | 是否消耗有效问数 | 玩家可见结果 |
+| --- | --- | --- | --- | --- |
+| 本地可判断的事实问题 | `PARSED` + `answer` | 否 | 是 | 是/否/或许 |
+| 语义有两个以上合理解释 | `AMBIGUOUS` | 否 | 否 | 澄清选项 |
+| 语义已识别但能力未实现 | `UNSUPPORTED` | 否 | 否 | 能力范围提示 |
+| 无法可靠建立语义框架 | `UNPARSED` | 否 | 否 | 改写示例 |
+| 本地事实缺失或冲突 | `fact_unknown` | 否 | 是（仅当问题已解析） | 资料不足 |
+| 明确允许的外部候选问题 | `external_candidate` | 仅在用户确认后 | 外部成功才计入 | 带证据的结果或可恢复失败 |
+| Provider 超时、拒绝或非法响应 | 外部错误 | 已发生的调用立即终止 | 否 | 中文可恢复提示 |
+| 规范数据包损坏 | 不创建游戏 | 否 | 不适用 | 阻止开局并显示修复指引 |
+
+“是否消耗有效问数”只由 `TurnCommitPolicy` 决定，UI 不得根据文字内容自行递增计数。
+
+## 23. 会话状态机与幂等性
+
+### 23.1 状态
+
+```text
+CREATED → PLAYING → WAITING_CLARIFICATION → PLAYING
+                    ├→ WON → CLOSED
+                    ├→ SURRENDERED → CLOSED
+                    └→ CLOSED
+```
+
+- `WAITING_CLARIFICATION` 只能接受澄清选项或取消，不能接受新的事实回合；
+- `WON`、`SURRENDERED` 和 `CLOSED` 是终态，所有写操作返回 `SESSION_CLOSED`；
+- 每次状态变更都必须由一个带单调 `sequence` 的事件产生。
+
+### 23.2 原子回合
+
+`handle_turn` 必须在一次事务中完成：
+
+```text
+读取 session 版本
+  → 归一化与解析
+  → 本地决策或生成澄清
+  → 计算 Player DTO
+  → 通过 TurnCommitPolicy 决定是否追加事件
+```
+
+只有最后一步成功才提交状态。外部调用失败、校验失败或重复提交不得追加 `ANSWERED` 事件。
+
+幂等键为 `(session_id, expected_sequence, normalized_input_hash)`。同一幂等键重试必须返回第一次结果，不得重复抽题、扣问数或触发外部调用。
+
+## 24. 配置与网络安全合同
+
+V5 只读取以下经过启动校验的配置；未列出的变量不得改变业务行为：
+
+| 配置 | 默认值 | 约束 |
+| --- | --- | --- |
+| `V5_EXTERNAL_ENABLED` | `false` | 只有显式 `true` 才允许外部升级 |
+| `V5_PROVIDER_URL` | 空 | 仅允许 HTTPS；开发 loopback 必须使用开发构建 |
+| `V5_REQUEST_TIMEOUT_MS` | `8000` | 范围 500–30000 |
+| `V5_SESSION_EXTERNAL_BUDGET` | `0` | 非负整数，按 session 计数 |
+| `V5_DATA_DIR` | 发布包内 `data/v5` | 必须包含并校验 manifest |
+| `V5_LOG_LEVEL` | `INFO` | 生产禁止 DEBUG 原文记录 |
+
+启动时必须完成：Schema 校验、数据包哈希校验、Provider URL 校验和秘密存在性校验。校验失败时以“外部增强不可用”启动本地模式；只有规范数据损坏才阻止开局。
+
+网络能力只存在于 `adapters/llm`。`semantic`、`domain`、`application` 和 `memory_sessions` 必须通过静态检查证明没有 socket、HTTP 客户端或模型 SDK 依赖。
+
+## 25. 证据、冲突与答案裁决
+
+事实裁决遵循以下顺序：
+
+1. 先按 `PredicateSchema` 验证值类型与时间精度；
+2. 再过滤当前 pack、人物和有效期；
+3. 汇总来源并检测同谓词冲突；
+4. 仅当证据满足策略时输出确定答案，否则输出 `fact_unknown` 或 `probably_*`；
+5. 将 `reason_code`、`fact_refs` 和 `source_refs` 写入内部轨迹，玩家层只接收安全文案。
+
+确定的“是/否”至少需要一条 `APPROVED` 来源、无未解决冲突、值类型匹配且时间关系可计算。`PROBABLE`、`DISPUTED`、区间重叠或来源不足都不得被压扁为确定的“否”。
+
+## 26. 变更治理与可追溯性
+
+- 语义词典、Predicate Schema、时间轴和数据包均有独立版本；版本写入 `DecisionTrace` 和发布 manifest；
+- 改变解析含义必须先新增黄金集案例，再提交 ADR amendment，禁止只改实现不改合同；
+- 改变数据事实必须生成逐字段 diff、来源 diff 和 pack 成员快照 diff；
+- 迁移、词典和 Schema 变更必须可回放、可逆或有明确隔离目录；
+- 中文与英文架构的章节、门禁、里程碑数量必须在 CI 中一致；
+- 每个发布候选必须关联一份不可变的 `quality/v5/release/manifest.json`，记录提交、数据哈希、测试报告和审校人。
+
+## 27. V5-M0 必交付物
+
+V5-M0 结束时不能只提交“已讨论”。必须同时存在以下可审查文件：
+
+1. `requirements-matrix`：意图、语义框架、能力、失败结果和联网权限的逐项矩阵；
+2. `language-gold-set`：每条输入的双人审校、期望解析结果和版本；
+3. `predicate-schema` 与 `period-ontology`：可机器校验的字段、枚举和边界规则；
+4. `threat-model`：Prompt 注入、目标泄露、秘密、loopback HTTP 和依赖风险；
+5. `migration-report` 模板：V4 候选数据的逐字段差异和隔离原因；
+6. `acceptance-plan`：第 16 节每个门禁的命令、样本、责任人和证据路径。
+
+未达到上述交付物前，M0 不得标记完成；即使旧版测试通过，也不得开始 M1。

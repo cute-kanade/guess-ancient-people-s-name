@@ -12,8 +12,8 @@ V5 不再采用“规则解析失败就调用 LLM”的路径。核心游戏必�
 
 ## 权威文档
 
-- [V5 中文架构](doc_CN/ARCHITECTURE.md)
-- [V5 English Architecture](doc_EN/ARCHITECTURE.md)
+- [V5 中文架构 v1.1](doc_CN/ARCHITECTURE.md)
+- [V5 English Architecture v1.1](doc_EN/ARCHITECTURE.md)
 - [V4 废案说明](V4_DEPRECATED.md)
 - [V4 中文历史记录](doc_CN/ARCHITECTURE_V4_DEPRECATED.md)
 - [V4 English Historical Record](doc_EN/ARCHITECTURE_V4_DEPRECATED.md)
